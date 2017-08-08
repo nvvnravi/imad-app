@@ -4,4 +4,4 @@ myHTMLButton.onClick=function(){
 
 alert("1");
 
-}
+};
