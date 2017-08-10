@@ -14,15 +14,78 @@ var spanTagValue=document.getElementById('spanCount');
 spanTagValue.innerHTML=currentCounter.toString();
 }
 };
-	//Now Make the request
+
+//Now Make the request
 request.open('GET','/counter');
 request.send();
 
-
 }         
+/*
+var submit_btn=document.getElementById('sbt_btn');
+submit_btn.onclick=function(){
+alert("start");
+var request=new XMLHttpRequest();
+	alert("1");
+request.onreadystatechange=function(){
+alert("2");
+	if(request.readyState===4 && request.status===200){
+	alert("3");
+		var names=request.responseText;
+		alert("4 names :"+names);
+		names=JSON.parse(names);
+	var list='';
+	for(var i=0;i<names.length;i++){
+			alert("5 names[i] :"+names[i]);
+ 		list+= '<li>'+names[i]+'</li>';
+	}
+	var ul=document.getelementbyid('namelist');
+	ul.innerhtml=list;
+}
+};
 
+//Now Make the request
+var inputName = document.getElementById('name');
+alert("inputName  : "+inputName.value);
+request.open('GET','/submitName?name='+inputName.value,true);
+request.send();
 
+};
+*/
 
+function AddName(){
+var request=new XMLHttpRequest();
+request.onreadystatechange=function(){
+	if(request.readyState===4 && request.status===200){
+		var names=request.responseText;
+		//alert("names: "+names);
+		names=JSON.parse(names);
+		var list='';
+		for(var i=0;i<names.length;i++){
+			list+= '<li>'+names[i]+'</li>';
+		}
+		var ul1=document.getElementById('namelist');
+		ul1.innerHTML=list;
+	}
+};
+
+//Now Make the request
+var inputName = document.getElementById('name');
+request.open('GET','/submitName?name='+inputName.value,true);
+request.send();
+inputName.value='';
+
+}
+
+function compare(a, b) {
+  if (a<b) {
+    return -1;
+  }
+  if (a>b) {
+    return 1;
+  }
+  // a must be equal to b
+  return 0;
+}
         </script>
     </head>
     <body>
@@ -50,11 +113,22 @@ request.send();
 				<li><a href="/article-three">Article Three-CSS</a></li>
 			</ol>
         </div>
+        
         <hr/>
         <div class="footer">
         This button <button id="myButton" onClick="javascript:testfunc();">Click Me!</button> has been clicked <span id="spanCount">0</span> times. 
         </div>
+        <hr/>
+        <!-- Add logic for name capture -->
+        <label for="name">Enter Name :</label>
+        <input type="text" name="name" id="name" placeholder="name"></input>
+        <input type="submit" name="sbt_btn" id="sbt_btn" onclick="AddName();"  value="Add Name"></input>
+        <div>
+        <span>Sorted Names :</span>
+        <ul id="namelist" name="namelist">
+        </ul>
         </div>
-       
+        </div>
+       <hr/>
     </body>
 </html>
