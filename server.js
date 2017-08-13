@@ -126,7 +126,7 @@ pool.query('SELECT * from user', (err, res) => {
   }else{
       JSON.stringfy(res);
   }
-  pool.end()
+ // pool.end()
 })
 });
 
