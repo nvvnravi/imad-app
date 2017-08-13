@@ -116,12 +116,12 @@ var articleHTMLTemplate=`
 return articleHTMLTemplate;
 }
 
-function generateArticleFromDB( content){
+function generateArticleFromDB( articleContent){
 
-var title=content.title;
-var heading=content.heading
-var textContent=content.text;
-var date=content.date;
+var title=articleContent.title;
+var heading=articleContent.heading
+var textContent=articleContent.content;
+var date=articleContent.date;
 
 var articleHTMLTemplate=`
 <!doctype html>
@@ -190,7 +190,7 @@ counter=counter+1;
 });
 
 app.get('/artciles/:articleName', function (req, res) {
-pool1.query('SELECT * from article', (err, result) => {
+pool1.query('SELECT * from article where name=', (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
