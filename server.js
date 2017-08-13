@@ -7,7 +7,7 @@ const pool = new Pool({
   host: 'db.imad.hasura-app.io',
   database: 'nvvnravi',
   password: 'db-nvvnravi-36741',
-  port: 3211
+  port: 3211,
 });
 //var Pool=require('pg').Pool;
 //'db-nvvnravi-36741',
