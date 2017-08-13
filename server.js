@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
-var Pool=require('pg');
+var Pool=require('pg-pool');
 //'db-nvvnravi-36741',
 //db.imad.hasura-app.io'
 var config={
