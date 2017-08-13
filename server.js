@@ -144,9 +144,7 @@ client.query('SELECT NOW()', (err, res) => {
 });
 
 app.get('/test-db', function (req, res) {
-var articleNameParam=req.params.articleName;
 
-  res.send(generateHTML(contents[articleNameParam]));
 });
 /** Old Code not optimzed
  app.get('/article-one', function (req, res) {
