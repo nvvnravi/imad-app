@@ -120,9 +120,11 @@ app.get('/', function (req, res) {
 
 var pool=new Pool(config);
 app.get('/test-db', function (req, res) {
+          alert('calling');
 pool.query('SELECT * from user', function (err, result) {
   console.log(err, res)
   if(err){
+      alert('DB error');
       res.status(500).send(err.toString());
   }else{
       res.send(JSON.stringfy(result));
