@@ -139,9 +139,9 @@ app.get('/testdb', function (req, res) {
    pool.query('SELECT * form user', (err, res) => {
   console.log(err, res);
   pool.end();
-});
+});*/
    
-pool.query('SELECT * from user', function (error, result) {
+client.query('SELECT * from user', function (error, result) {
  
   if(error){
       
@@ -152,7 +152,7 @@ pool.query('SELECT * from user', function (error, result) {
   
  // pool.end()
 });
-*/
+
 });
 
 
