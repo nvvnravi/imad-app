@@ -142,7 +142,7 @@ app.get('/testdb', function (req, res) {
   //pool.end();
 });
 
- res.send("test db");
+// res.send("test db");
 
 });
 
