@@ -123,12 +123,12 @@ counter=counter+1;
 });
 
 app.get('/:articleName', function (req, res) {
-var articleNameParam=req.params.articleName;
+var articleNameParam=req.params.articlvareName;
 
   res.send(generateHTML(contents[articleNameParam]));
 });
 
-var pool=require('pg').pool;
+var Pool=require('pg').pool;
 
 var config={
   user: 'nvvnravi',
@@ -137,7 +137,7 @@ var config={
   password: 'db-nvvnravi-36741',
   port: 5432,	
 };
-
+var pool=new Pool(config);
 app.get('/test-db', function (req, res) {
 
 });
