@@ -201,7 +201,7 @@ pool1.query('SELECT * from article where name=', (err, result) => {
         res.send(generateArticleFromDB(articleData));
     }
     }
-  }
+  
     
 });
 
