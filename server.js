@@ -132,8 +132,9 @@ res.send(JSON.stringify(names.sort()));
 
 var pool=new Pool(config);
 app.get('/testdb', function (req, res) {
-    res.send("test db");
    var client= pool.connect();
+   
+    res.send("test db");
   /** 
    pool.query('SELECT * form user', (err, res) => {
   console.log(err, res);
