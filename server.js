@@ -189,7 +189,7 @@ counter=counter+1;
   res.send(counter.toString());
 });
 
-app.get('/artciles/:articleName1', function (req, res) {
+app.get('/articles/:articleName1', function (req, res) {
 pool1.query("SELECT * from article where name='"+req.params.articlvareName1+"'", (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
