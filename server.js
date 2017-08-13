@@ -189,6 +189,18 @@ counter=counter+1;
   res.send(counter.toString());
 });
 
+app.get('/artciles/:articleName', function (req, res) {
+pool1.query('SELECT * from article', (err, result) => {
+  if(err){
+      res.send("Error in getting records from DB"+err.toString());
+  }else{
+    res.send(JSON.stringify(result));
+  }
+    
+});
+res.send(generateHTML(contents[articleNameParam]));
+});
+
 app.get('/:articleName', function (req, res) {
 var articleNameParam=req.params.articlvareName;
 res.send(generateHTML(contents[articleNameParam]));
