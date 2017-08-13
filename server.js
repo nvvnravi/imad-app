@@ -132,7 +132,7 @@ res.send(JSON.stringify(names.sort()));
 });
 
 
-var pool=new Pool(config);
+var pool=new pg(config);
 app.get('/testdb', function (req, res) {
    var client= pool.connect();
    
