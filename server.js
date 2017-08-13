@@ -9,7 +9,7 @@ var config={
   host: 'localhost',
   database: 'nvvnravi',
   password: process.env.DB_PASSWORD,
-  port: 5432,	
+  port: 5432	
 };
 
 var app = express();
