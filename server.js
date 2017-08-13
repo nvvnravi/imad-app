@@ -129,7 +129,13 @@ app.get('/', function (req, res) {
 //var pool=new Pool(config);
 app.get('/test-db', function (req, res) {
    
-        console.log('calling');
+   pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
+})
+   
+   
+/**
 pool.query('SELECT * from user', function (err, result) {
   console.log(err, res)
   if(err){
@@ -138,8 +144,9 @@ pool.query('SELECT * from user', function (err, result) {
   }else{
       res.send(JSON.stringfy(result));
   }
+  
  // pool.end()
-});
+});*/
 });
 
 var names=[];
