@@ -128,6 +128,21 @@ var articleNameParam=req.params.articleName;
   res.send(generateHTML(contents[articleNameParam]));
 });
 
+const { Client } = require('pg');
+const client = new Client({
+  user: 'nvvnravi',
+  host: 'localhost',
+  database: 'nvvnravi',
+  password: 'db-nvvnravi-36741',
+  port: 5432,
+});
+client.connect();
+
+client.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  client.end()
+});
+
 app.get('/test-db', function (req, res) {
 var articleNameParam=req.params.articleName;
 
