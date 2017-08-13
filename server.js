@@ -15,7 +15,7 @@ var config={
 };
 
 
-//var conString = "pg://nvvnravi:db-nvvnravi-36741@localhost:5432/user";
+var conString = "pg://nvvnravi:db-nvvnravi-36741@localhost:5432/user";
 //var client = new pg.Client(conString);
 //client.connect();
 
