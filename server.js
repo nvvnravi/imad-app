@@ -120,10 +120,7 @@ function generateArticleFromDB( content){
 
 var title=content.title;
 var heading=content.heading
-var q1=content.q1;
-var a1=content.a1;
-var q2=content.q2;
-var a2=content.a2;
+var textContent=content.text;
 var date=content.date;
 
 var articleHTMLTemplate=`
@@ -149,7 +146,7 @@ var articleHTMLTemplate=`
          <h2>
         ${today}
         </h2>
-        
+        ${textContent}
         </div>
     </body>
 </html>
