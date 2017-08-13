@@ -2,8 +2,8 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
-//var Pool=require('pg').Pool;
-var pg = require('pg');
+var pool=require('pg').Pool;
+//var pg = require('pg');
 //'db-nvvnravi-36741',
 //db.imad.hasura-app.io'
 var config={
@@ -132,10 +132,8 @@ res.send(JSON.stringify(names.sort()));
 });
 
 
-var pool=new pg(config);
+var pool1=new pool(config);
 app.get('/testdb', function (req, res) {
-   var client= pool.connect();
-   
     res.send("test db");
   /** 
    pool.query('SELECT * form user', (err, res) => {
