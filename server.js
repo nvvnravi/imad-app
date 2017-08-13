@@ -8,7 +8,7 @@ var config={
   host: 'localhost',
   database: 'nvvnravi',
   password: 'db-nvvnravi-36741',
-  port: 5432,	
+  port: 5432	
 };
 
 var app = express();
