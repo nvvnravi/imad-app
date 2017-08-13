@@ -138,7 +138,7 @@ app.get('/testdb', function (req, res) {
    
    pool1.query('SELECT * form user', (err, result) => {
   if(err){
-      res.send("Error in getting records from DB");
+      res.send("Error in getting records from DB"+err.toString());
   }else{
   res.send(JSON.stringify(result));
   }
