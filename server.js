@@ -15,22 +15,6 @@ var config={
 };
 
 
-var conString = "pg://nvvnravi:db-nvvnravi-36741@localhost:5432/user";
-pg.connect(conString, onConnect);
-
-function onConnect(err, client, done) {
-  //Err - This means something went wrong connecting to the database.
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
-
-  //For now let's end client
-  //client.end();
-}
-//var client = new pg.Client(conString);
-//client.connect();
-
 var app = express();
 app.use(morgan('combined'));
 
@@ -148,30 +132,17 @@ res.send(JSON.stringify(names.sort()));
 });
 
 
-//var pool=new Pool(config);
+var pool=new Pool(config);
 app.get('/testdb', function (req, res) {
    var client= pool.connect();
    
-   // res.send("test db");
+    res.send("test db");
   /** 
    pool.query('SELECT * form user', (err, res) => {
   console.log(err, res);
   pool.end();
 });*/
-   //client.query('SELECT * from user');
-/**
-pool.query('SELECT * from user', function (error, result) {
- 
-  if(error){
-      
-      res.status(500).send(error.toString());
-  }else{
-      res.send(JSON.stringfy(result));
-  }
-  
- // pool.end()
-});
-*/
+
 });
 
 
