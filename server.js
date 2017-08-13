@@ -153,8 +153,7 @@ counter=counter+1;
 
 app.get('/:articleName', function (req, res) {
 var articleNameParam=req.params.articlvareName;
-
-  res.send(generateHTML(contents[articleNameParam]));
+res.send(generateHTML(contents[articleNameParam]));
 });
 
 
