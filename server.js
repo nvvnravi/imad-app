@@ -127,6 +127,12 @@ var articleNameParam=req.params.articleName;
 
   res.send(generateHTML(contents[articleNameParam]));
 });
+
+app.get('/test-db', function (req, res) {
+var articleNameParam=req.params.articleName;
+
+  res.send(generateHTML(contents[articleNameParam]));
+});
 /** Old Code not optimzed
  app.get('/article-one', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
