@@ -139,7 +139,10 @@ var config={
 };
 var pool=new Pool(config);
 app.get('/test-db', function (req, res) {
-
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
+})
 });
 /** Old Code not optimzed
  app.get('/article-one', function (req, res) {
