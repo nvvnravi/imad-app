@@ -194,7 +194,11 @@ pool1.query('SELECT * from article where name=', (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
-    res.send(JSON.stringify(result));
+    if(result.rows.lenth ===0){
+        res.status(404).send("NO Article Found!!!");
+    }else {
+    }
+    }
   }
     
 });
