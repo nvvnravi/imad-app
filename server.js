@@ -3,6 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 
 //var Pool=require('pg').Pool;
+var pg = require('pg');
 //'db-nvvnravi-36741',
 //db.imad.hasura-app.io'
 var config={
@@ -14,9 +15,9 @@ var config={
 };
 
 
-var conString = "pg://nvvnravi:db-nvvnravi-36741@localhost:5432/user";
-var client = new pg.Client(conString);
-client.connect();
+//var conString = "pg://nvvnravi:db-nvvnravi-36741@localhost:5432/user";
+//var client = new pg.Client(conString);
+//client.connect();
 
 var app = express();
 app.use(morgan('combined'));
@@ -145,7 +146,7 @@ app.get('/testdb', function (req, res) {
   console.log(err, res);
   pool.end();
 });*/
-   client.query('SELECT * from user');
+   //client.query('SELECT * from user');
 /**
 pool.query('SELECT * from user', function (error, result) {
  
