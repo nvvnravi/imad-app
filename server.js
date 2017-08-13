@@ -127,8 +127,6 @@ app.get('/testdb', function (req, res) {
   pool.end();
 });
    */
-   
-
 pool.query('SELECT * from user', function (err, result) {
  
   if(err){
