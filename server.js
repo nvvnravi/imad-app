@@ -194,7 +194,7 @@ pool1.query("SELECT * from article where name='"+req.params.articlvareName+"'", 
   if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
-    if(result.rows.lenth ===0){
+    if(result.rows.lenth === 0){
         res.status(404).send("NO Article Found!!!");
     }else {
         var articleData=result.rows[0];
