@@ -190,7 +190,7 @@ counter=counter+1;
 });
 
 app.get('/artciles/:articleName', function (req, res) {
-pool1.query('SELECT * from article where name=', (err, result) => {
+pool1.query("SELECT * from article where name='"+req.params.articlvareName+"'", (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
