@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-const { Pool, Client } = require('pg')
+const { Pool, Client } = require('pg');
 var Pool=require('pg').Pool;
 //'db-nvvnravi-36741',
 //db.imad.hasura-app.io'
