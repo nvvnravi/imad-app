@@ -8,7 +8,7 @@ var config={
   user: 'nvvnravi',
   host: 'localhost',
   database: 'nvvnravi',
-  password: process.env.DB_PASSWORD,
+  password: 'db-nvvnravi-36741',
   port: 5432	
 };
 
