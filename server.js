@@ -16,7 +16,7 @@ var config={
 
 
 var conString = "pg://nvvnravi:db-nvvnravi-36741@localhost:5432/user";
-pg.connect(connectionString, onConnect);
+pg.connect(conString, onConnect);
 
 function onConnect(err, client, done) {
   //Err - This means something went wrong connecting to the database.
