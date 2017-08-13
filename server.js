@@ -119,6 +119,17 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+
+
+var names=[];
+app.get('/submitName', function (req, res) {
+//var reqName=req.params.name;
+var reqName=req.query.name;
+names.push(reqName);
+res.send(JSON.stringify(names.sort()));
+});
+
+
 var pool=new Pool(config);
 app.get('/testdb', function (req, res) {
   /** 
@@ -138,14 +149,6 @@ pool.query('SELECT * from user', function (error, result) {
   
  // pool.end()
 });
-});
-
-var names=[];
-app.get('/submitName', function (req, res) {
-//var reqName=req.params.name;
-var reqName=req.query.name;
-names.push(reqName);
-res.send(JSON.stringify(names.sort()));
 });
 
 
