@@ -1,6 +1,15 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var Pool=require('pg').Pool;
+
+var config={
+  user: 'nvvnravi',
+  host: 'localhost',
+  database: 'nvvnravi',
+  password: 'db-nvvnravi-36741',
+  port: 5432,	
+};
 
 var app = express();
 app.use(morgan('combined'));
@@ -107,15 +116,7 @@ var counter=0;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-var Pool=require('pg').Pool;
 
-var config={
-  user: 'nvvnravi',
-  host: 'localhost',
-  database: 'nvvnravi',
-  password: 'db-nvvnravi-36741',
-  port: 5432,	
-};
 var pool=new Pool(config);
 app.get('/test-db', function (req, res) {
 pool.query('SELECT NOW()', (err, res) => {
