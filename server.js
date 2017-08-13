@@ -129,7 +129,7 @@ app.get('/testdb', function (req, res) {
    */
 pool.query('SELECT * from user', function (error, result) {
  
-  if(err){
+  if(error){
       alert('DB error');
       res.status(500).send(error.toString());
   }else{
