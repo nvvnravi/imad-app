@@ -136,7 +136,7 @@ var pool1=new pool(config);
 app.get('/testdb', function (req, res) {
    
    
-   pool1.query('SELECT * form user', (err, result) => {
+   pool1.query('SELECT * from user', (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
