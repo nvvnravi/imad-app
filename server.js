@@ -139,7 +139,7 @@ names.push(reqName);
 res.send(JSON.stringify(names.sort()));
 });
 
-
+/**
 app.get('/counter', function (req, res) {
 counter=counter+1;
   res.send(counter.toString());
@@ -150,6 +150,7 @@ var articleNameParam=req.params.articlvareName;
 
   res.send(generateHTML(contents[articleNameParam]));
 });
+*/
 
 
 
