@@ -132,12 +132,13 @@ res.send(JSON.stringify(names.sort()));
 
 var pool=new Pool(config);
 app.get('/testdb', function (req, res) {
+    res.send("test db");
   /** 
    pool.query('SELECT * form user', (err, res) => {
   console.log(err, res);
   pool.end();
 });
-   */
+   
 pool.query('SELECT * from user', function (error, result) {
  
   if(error){
@@ -149,6 +150,7 @@ pool.query('SELECT * from user', function (error, result) {
   
  // pool.end()
 });
+*/
 });
 
 
