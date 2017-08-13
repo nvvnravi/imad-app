@@ -197,12 +197,14 @@ pool1.query('SELECT * from article where name=', (err, result) => {
     if(result.rows.lenth ===0){
         res.status(404).send("NO Article Found!!!");
     }else {
+        var articleData=result.rows[0];
+        res.send(generateArticleFromDB(articleData));
     }
     }
   }
     
 });
-res.send(generateHTML(contents[articleNameParam]));
+
 });
 
 app.get('/:articleName', function (req, res) {
