@@ -26,7 +26,7 @@ function onConnect(err, client, done) {
   }
 
   //For now let's end client
-  client.end();
+  //client.end();
 }
 //var client = new pg.Client(conString);
 //client.connect();
