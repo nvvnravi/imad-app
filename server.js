@@ -1,8 +1,8 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-const { Pool} = require('pg');
-const pool = new Pool({
+var Pool = require('pg');
+var pool = new Pool({
   user: 'nvvnravi',
   host: 'db.imad.hasura-app.io',
   database: 'nvvnravi',
