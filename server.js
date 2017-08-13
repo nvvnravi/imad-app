@@ -128,7 +128,7 @@ var articleNameParam=req.params.articleName;
   res.send(generateHTML(contents[articleNameParam]));
 });
 
-const { Client } = require('pg');
+var pool=require('pg').pool;
 
 app.get('/test-db', function (req, res) {
 
