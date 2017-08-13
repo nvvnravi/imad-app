@@ -107,6 +107,22 @@ var counter=0;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+var Pool=require('pg').Pool;
+
+var config={
+  user: 'nvvnravi',
+  host: 'localhost',
+  database: 'nvvnravi',
+  password: 'db-nvvnravi-36741',
+  port: 5432,	
+};
+var pool=new Pool(config);
+app.get('/test-db', function (req, res) {
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
+})
+});
 
 var names=[];
 app.get('/submitName', function (req, res) {
@@ -128,22 +144,8 @@ var articleNameParam=req.params.articlvareName;
   res.send(generateHTML(contents[articleNameParam]));
 });
 
-var Pool=require('pg').Pool;
 
-var config={
-  user: 'nvvnravi',
-  host: 'localhost',
-  database: 'nvvnravi',
-  password: 'db-nvvnravi-36741',
-  port: 5432,	
-};
-var pool=new Pool(config);
-app.get('/test-db', function (req, res) {
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  pool.end()
-})
-});
+
 /** Old Code not optimzed
  app.get('/article-one', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
