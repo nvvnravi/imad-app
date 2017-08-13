@@ -138,6 +138,7 @@ app.get('/testdb', function (req, res) {
    
    pool1.query('SELECT * form user', (err, res) => {
   //console.log(err, res);
+  res.send(JSON.stringify(res));
   //pool.end();
 });
 
