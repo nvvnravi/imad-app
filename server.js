@@ -136,9 +136,9 @@ var pool1=new pool(config);
 app.get('/testdb', function (req, res) {
    
    
-   pool1.query('SELECT * form user', (err, res) => {
+   pool1.query('SELECT * form user', (err, result) => {
   //console.log(err, res);
-  res.send(JSON.stringify(res));
+  res.send(JSON.stringify(result));
   //pool.end();
 });
 
