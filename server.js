@@ -128,7 +128,7 @@ var articleNameParam=req.params.articlvareName;
   res.send(generateHTML(contents[articleNameParam]));
 });
 
-var Pool=require('pg').pool;
+var Pool=require('pg').Pool;
 
 var config={
   user: 'nvvnravi',
