@@ -130,8 +130,8 @@ app.get('/', function (req, res) {
 app.get('/test-db', function (req, res) {
    
    pool.query('SELECT * form user', (err, res) => {
-  console.log(err, res)
-  pool.end()
+  console.log(err, res);
+  pool.end();
 });
    
    
