@@ -116,6 +116,47 @@ var articleHTMLTemplate=`
 return articleHTMLTemplate;
 }
 
+function generateArticleFromDB( content){
+
+var title=content.title;
+var heading=content.heading
+var q1=content.q1;
+var a1=content.a1;
+var q2=content.q2;
+var a2=content.a2;
+var date=content.date;
+
+var articleHTMLTemplate=`
+<!doctype html>
+<html>
+    <head>
+    <Title>
+       ${title}
+       </Title>
+       <meta name="viewport" content="width-device-width,initial-scale=1"/>
+        <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+    <body>
+    <div class="contaner">
+        <div>
+        <a href="/">Go To HomePage</a>
+        </div>
+        <hr/>
+        <h1>
+        ${heading}
+        </h1>
+<hr/>
+         <h2>
+        ${today}
+        </h2>
+        
+        </div>
+    </body>
+</html>
+`;
+return articleHTMLTemplate;
+}
+
 var counter=0;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
