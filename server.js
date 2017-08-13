@@ -135,7 +135,7 @@ res.send(JSON.stringify(names.sort()));
 });
 
 
-var pool=new Pool(config);
+//var pool=new Pool(config);
 app.get('/testdb', function (req, res) {
    var client= pool.connect();
    
@@ -146,6 +146,7 @@ app.get('/testdb', function (req, res) {
   pool.end();
 });*/
    client.query('SELECT * from user');
+/**
 pool.query('SELECT * from user', function (error, result) {
  
   if(error){
@@ -157,7 +158,7 @@ pool.query('SELECT * from user', function (error, result) {
   
  // pool.end()
 });
-
+*/
 });
 
 
