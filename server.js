@@ -120,6 +120,7 @@ app.get('/', function (req, res) {
 
 var pool=new Pool(config);
 app.get('/test-db', function (req, res) {
+    pool.connect();
         console.log('calling');
 pool.query('SELECT * from user', function (err, result) {
   console.log(err, res)
