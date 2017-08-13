@@ -127,7 +127,7 @@ pool.query('SELECT * from user', (err, res) => {
       JSON.stringfy(res);
   }
  // pool.end()
-})
+});
 });
 
 var names=[];
