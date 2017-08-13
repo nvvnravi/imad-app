@@ -2,12 +2,12 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool=require('pg').Pool;
-
+//'db-nvvnravi-36741',
 var config={
   user: 'nvvnravi',
   host: 'db.imad.hasura-app.io',
   database: 'nvvnravi',
-  password: 'db-nvvnravi-36741',
+  password: process.env.DB_PASSWORD,
   port: 5432	
 };
 
