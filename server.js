@@ -130,6 +130,14 @@ var articleNameParam=req.params.articleName;
 
 var pool=require('pg').pool;
 
+var config={
+  user: 'nvvnravi',
+  host: 'localhost',
+  database: 'nvvnravi',
+  password: 'db-nvvnravi-36741',
+  port: 5432,	
+};
+
 app.get('/test-db', function (req, res) {
 
 });
