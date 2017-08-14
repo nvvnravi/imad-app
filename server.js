@@ -116,7 +116,7 @@ var articleHTMLTemplate=`
 return articleHTMLTemplate;
 }
 
-function generateArticleFromDB( articleContent){
+function generateArticleFromDB(articleContent){
 
 var title=articleContent.title;
 var heading=articleContent.heading
@@ -144,7 +144,7 @@ var articleHTMLTemplate=`
         </h1>
 <hr/>
          <h2>
-        ${today}
+        ${date.toDateString()}
         </h2>
         ${textContent}
         </div>
