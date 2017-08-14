@@ -188,10 +188,10 @@ app.get('/counter', function (req, res) {
 counter=counter+1;
   res.send(counter.toString());
 });
-var pool2=new pool(config);
+//var pool2=new pool(config);
 app.get('/articles/:articleName1', function (req, res) {
 
-pool2.query("SELECT * from article where name='"+req.params.articleName1+"'", (err, result) => {
+pool1.query("SELECT * from article where name='"+req.params.articleName1+"'", (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
