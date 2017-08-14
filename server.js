@@ -6,7 +6,7 @@ var config={
   user: 'nvvnravi',
   host: 'db.imad.hasura-app.io',
   database: 'nvvnravi',
-  password: 'db-nvvnravi-36741',
+  password: process.env.DB_PASSWORD,
   port: 5432	
 };
 
