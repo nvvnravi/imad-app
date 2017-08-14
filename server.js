@@ -198,9 +198,9 @@ pool2.query("SELECT * from article where name='"+req.params.articleName1+"'", (e
     if(result.rows.lenth === 0){
         res.status(404).send("Article NOT Found!!!");
     }else {
-        //var articleData=result.rows[0];
+        var articleData=result.rows[0];
         //res.send(generateArticleFromDB(articleData));
-        res.send("Found Article!!!"+result.rows[0]);
+        res.send("Found Article!!!"+result.rows[0].title);
     }
     }
   });
