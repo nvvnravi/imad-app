@@ -200,7 +200,7 @@ pool2.query("SELECT * from article where name='"+req.params.articleName1+"'", (e
     }else {
         //var articleData=result.rows[0];
         //res.send(generateArticleFromDB(articleData));
-        res.send("Found Article!!!");
+        res.send("Found Article!!!"+result.rows[0]);
     }
     }
   });
