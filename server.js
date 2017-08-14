@@ -188,7 +188,7 @@ app.get('/counter', function (req, res) {
 counter=counter+1;
   res.send(counter.toString());
 });
-//var pool2=new pool(config);
+
 app.get('/articles/:articleName1', function (req, res) {
 
 pool1.query("SELECT * from article where name='"+req.params.articleName1+"'", (err, result) => {
