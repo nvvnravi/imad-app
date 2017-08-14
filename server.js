@@ -172,7 +172,7 @@ client.query('SELECT * from user1', (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
-    res.send(JSON.stringify(result));
+    res.send(JSON.stringify(result)+"     "+process.env.DATABASE_URL);
   }
     
 });
