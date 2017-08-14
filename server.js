@@ -166,9 +166,9 @@ res.send(JSON.stringify(names.sort()));
 });
 
 
-var pool1=new pool(config);
+var client=new pool(config);
 app.get('/testdb', function (req, res) {
-pool1.query('SELECT * from user1', (err, result) => {
+client.query('SELECT * from user1', (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
@@ -187,7 +187,7 @@ counter=counter+1;
 
 app.get('/articles/:articleName', function (req, res) {
 
-pool1.query("SELECT * from article where name=$1",[req.params.articleName], (err, result) => {
+client.query("SELECT * from article where name=$1",[req.params.articleName], (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
