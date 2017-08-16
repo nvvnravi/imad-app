@@ -172,10 +172,13 @@ app.get('/hash/:inputValue',function(req,res){
 );
 var client=new pool(config);
 app.post('/create-user',function(req,res){
+    //read username from the request body
     var userName=req.body.username;
+    //read password from the request body
     var password=req.body.password;
-    
+    //Convert the password into a hashedPassword
     var hashPassword = hash(password);
+    //Now insert the user in the table with the passsword
     client.query('INSERT into  user1  (username,password) values ($!,$2)',[username,hashPassword], function(err,res){
      if(err){
       res.send("Error in getting records from DB"+err.toString());
