@@ -3,6 +3,8 @@ var morgan = require('morgan');
 var path = require('path');
 var pool=require('pg').Pool;
 const crypto = require('crypto');
+var bodyParser=require('body-parser');
+
 var config={
   user: 'nvvnravi',
   host: 'db.imad.hasura-app.io',
@@ -14,7 +16,7 @@ var config={
 
 var app = express();
 app.use(morgan('combined'));
-
+app.use(bodyParser.json());
 
 //Create JS array of HTML template pages
 var contents={
@@ -157,8 +159,8 @@ app.get('/', function (req, res) {
 });
 
 function hash(input){
-
-const key = crypto.pbkdf2Sync(input, 'MyNewSalt', 100000, 512, 'sha512');
+var salt=crypto.getRandomBytes(512).toString('hex');
+const key = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
 console.log(key.toString('hex'));  // '3745e48...aa39b34'    
 return key.toString('hex');
 }
@@ -168,6 +170,20 @@ app.get('/hash/:inputValue',function(req,res){
     res.send(hashValue);
 }
 );
+var client=new pool(config);
+app.post('/create-user',function(req,res){
+    var userName=req.body.username;
+    var password=req.body.password;
+    
+    var hashPassword = hash(password);
+    client.query('INSERT into  user1  (username,password) values ($!,$2)',[username,hashPassword], function(err,res){
+     if(err){
+      res.send("Error in getting records from DB"+err.toString());
+  }else{
+    res.send('User Successfully Created!!!');
+  }   
+    });
+});
 
 var names=[];
 app.get('/submitName', function (req, res) {
@@ -178,7 +194,7 @@ res.send(JSON.stringify(names.sort()));
 });
 
 
-var client=new pool(config);
+
 app.get('/testdb', function (req, res) {
 client.query('SELECT * from user1', (err, result) => {
   if(err){
