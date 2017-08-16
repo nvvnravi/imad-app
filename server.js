@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var pool=require('pg').Pool;
+const crypto = require('crypto');
 var config={
   user: 'nvvnravi',
   host: 'db.imad.hasura-app.io',
@@ -155,7 +156,18 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+function hash(input){
 
+const key = crypto.pbkdf2Sync(input, 'MyNewSalt', 100000, 512, 'sha512');
+console.log(key.toString('hex'));  // '3745e48...aa39b34'    
+return key.toString('hex');
+}
+
+app.get('/hash/:inputValue',function(req,res){
+    var hashValue=hash(req.params.inputValue);
+    res.send(hashValue);
+}
+);
 
 var names=[];
 app.get('/submitName', function (req, res) {
