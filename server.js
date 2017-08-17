@@ -165,11 +165,12 @@ console.log(key.toString('hex'));  // '3745e48...aa39b34'
 return key.toString('hex');
 }
 
-app.get('/hash/:inputValue',function(req,res){
-    var hashValue=hash(req.params.inputValue);
-    res.send(hashValue);
-}
-);
+//app.get('/hash/:inputValue',function(req,res){
+//    var hashValue=hash(req.params.inputValue);
+//    res.send(hashValue);
+//}
+//);
+
 var client=new pool(config);
 app.post('/create-user',function(req,res){
     //read username from the request body
