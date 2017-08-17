@@ -236,10 +236,10 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
     
 });
 
-app.get('/:articleName', function (req, res) {
-var articleNameParam=req.params.articlvareName;
-res.send(generateHTML(contents[articleNameParam]));
-});
+//app.get('/:articleName', function (req, res) {
+//var articleNameParam=req.params.articlvareName;
+//res.send(generateHTML(contents[articleNameParam]));
+//});
 
 
 
