@@ -183,7 +183,7 @@ app.post('/create-user',function(req,res){
     var hashPassword = hash(passwordValue);
     console.log("hashPassword  :  "+hashPassword);
     //Now insert the user in the table with the passsword
-    client.query('INSERT into  user1  (username,password) values ($!,$2)',[userName,hashPassword], function(err,res){
+    client.query('INSERT into  user1  (username,password) values ($!,$2)',[userName,hashPassword], (err,res) => {
      if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
