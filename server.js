@@ -161,7 +161,7 @@ app.get('/', function (req, res) {
 function hash(input){
 var salt=crypto.randomBytes(128).toString('hex');
 const key = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
-console.log(key.toString('hex'));  // '3745e48...aa39b34'    
+//console.log(key.toString('hex'));  // '3745e48...aa39b34'    
 return key.toString('hex');
 }
 
