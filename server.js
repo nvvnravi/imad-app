@@ -159,8 +159,8 @@ app.get('/', function (req, res) {
 });
 
 function hash(input){
-//var salt=crypto.randomBytes(128).toString('hex');
-const key = crypto.pbkdf2Sync(input, 'salt', 100000, 128, 'sha512');
+var salt=crypto.randomBytes(128).toString('hex');
+const key = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
 //console.log(key.toString('hex'));  // '3745e48...aa39b34'    
 return key.toString('hex');
 }
@@ -183,7 +183,7 @@ app.post('/create-user',function(req,res){
     var hashPassword = hash(passwordValue);
     console.log("hashPassword  :  "+hashPassword);
     //Now insert the user in the table with the passsword
-    client.query("INSERT into  user1  (username,password) values ($1,$2)",['user5','MyPassword'], (err,result) => {
+    client.query("INSERT into  user1  (username,password) values ($1,$2)",[userName,hashPassword], (err,result) => {
      if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
