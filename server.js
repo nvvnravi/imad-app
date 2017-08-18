@@ -203,7 +203,7 @@ res.send(JSON.stringify(names.sort()));
 
 
 app.get('/testdb', function (req, res) {
-     client.query("INSERT into  user1  (username,password) values ('username4','newpassword')", (err,res) => {
+     client.query("INSERT into  user1  (username,password) values ($1,$2)",['user5','MyPassword'], (err,res) => {
 //client.query('SELECT * from user1', (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
