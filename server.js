@@ -178,6 +178,7 @@ app.post('/create-user',function(req,res){
     console.log(userName);
     //read password from the request body
     var passwordValue=req.body.password;
+    console.log(passwordValue);
     //Convert the password into a hashedPassword
     var hashPassword = hash(passwordValue);
     //Now insert the user in the table with the passsword
