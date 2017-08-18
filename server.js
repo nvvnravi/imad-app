@@ -175,6 +175,7 @@ var client=new pool(config);
 app.post('/create-user',function(req,res){
     //read username from the request body
     var userName=req.body.username;
+    console.log(userName);
     //read password from the request body
     var passwordValue=req.body.password;
     //Convert the password into a hashedPassword
