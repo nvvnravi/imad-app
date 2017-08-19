@@ -95,8 +95,8 @@ request.onreadystatechange=function(){
 //Now Make the request
 var userName = document.getElementById('username').value;
 var userPassword = document.getElementById('password').value;
-console.log(userName);
-console.log(userPassword);
+//console.log(userName);
+//console.log(userPassword);
 request.open('POST','http://nvvnravi.imad.hasura-app.io/login',true);
 request.setRequestHeader('Content-Type',"application/json");
 request.send(JSON.stringify({username:userName,password:userPassword}));
