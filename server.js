@@ -202,7 +202,6 @@ app.post('/login',function(req,res){
      if(err){
       res.status(500).send("Error in getting records from DB"+err.toString());
   }else{
-      var hashPassword_from_DB=JSON.stringify(result);
       if(result.rows.length === 0){
           res.status(403).send("user does not exists.\n");
       }else{
