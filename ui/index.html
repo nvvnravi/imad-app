@@ -81,6 +81,16 @@ function login(){
 
 var request=new XMLHttpRequest();
 
+request.onreadystatechange=function(){
+	if( request.status===200){
+	//console.log("user is logged in");
+	alert('logged in successfull');
+	}else(request.status===403){
+	  //  console.log("username /password is invalid.");
+	alert('username /password is invalid.');
+	}
+};
+
 
 
 
