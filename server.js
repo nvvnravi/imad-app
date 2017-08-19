@@ -192,6 +192,29 @@ app.post('/create-user',function(req,res){
     });
 });
 
+app.post('/login',function(req,res){
+    //read username from the request body
+    var userName=req.body.username;
+   //read password from the request body
+    var passwordValue=req.body.password;
+    //Convert the password into a hashedPassword
+    var hashPassword = hash(passwordValue);
+    console.log("hashPassword  :  "+hashPassword);
+    //Now get the hashedpassword from the database
+    client.query("select password from   user1 where username=$1",[userName], (err,result) => {
+     if(err){
+      res.send("Error in getting records from DB"+err.toString());
+  }else{
+      var hashPassword_from_DB=JSON.stringify(result);
+      if(hashPassword === hashPassword_from_DB){
+        res.send('User Successfully Logged In');
+      }else{
+          res.send('User credentials are incorrect');
+      }
+  }   
+    });
+});
+
 var names=[];
 app.get('/submitName', function (req, res) {
 //var reqName=req.params.name;
@@ -203,8 +226,8 @@ res.send(JSON.stringify(names.sort()));
 
 
 app.get('/testdb', function (req, res) {
-     client.query("INSERT into  user1  (username,password) values ($1,$2)",['user5','MyPassword'], (err,res) => {
-//client.query('SELECT * from user1', (err, result) => {
+    
+client.query('SELECT * from user1', (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
