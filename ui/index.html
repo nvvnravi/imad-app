@@ -83,7 +83,7 @@ request.onreadystatechange=function(){
 	if(request.readyState===4 && request.status===200){
 	console.log("user is logged in");
 	alert('logged in successfull');
-	}else(requet.status===403){
+	}else(request.status===403){
 	    console.log("username /password is invalid.");
 	alert('username /password is invalid.');
 	}
