@@ -158,10 +158,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-function hash(input){
-var salt=crypto.randomBytes(128).toString('hex');
+function hash(input,salt){
 const key = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
- 
 return ["pbkdf2","100000",salt,key.toString('hex')].join('$');
 }
 
@@ -180,7 +178,8 @@ app.post('/create-user',function(req,res){
     var passwordValue=req.body.password;
     console.log("Password: "+passwordValue);
     //Convert the password into a hashedPassword
-    var hashPassword = hash(passwordValue);
+    var salt=crypto.randomBytes(128).toString('hex');
+    var hashPassword = hash(passwordValue,salt);
     console.log("hashPassword  :  "+hashPassword);
     //Now insert the user in the table with the passsword
     client.query("INSERT into  user1  (username,password) values ($1,$2)",[userName,hashPassword], (err,result) => {
@@ -197,26 +196,24 @@ app.post('/login',function(req,res){
     var userName=req.body.username;
    //read password from the request body
     var passwordValue=req.body.password;
-    //Convert the password into a hashedPassword
-    var hashPassword = hash(passwordValue);
-    console.log("hashPassword  :  "+hashPassword);
+    
     //Now get the hashedpassword from the database
     client.query("select password from   user1 where username=$1",[userName], (err,result) => {
      if(err){
       res.status(500).send("Error in getting records from DB"+err.toString());
   }else{
       var hashPassword_from_DB=JSON.stringify(result);
-      /**
-      if(hashPassword === hashPassword_from_DB){
-        res.send('User Successfully Logged In');
-      }else{
-          res.send('User credentials are incorrect');
-      }
-      */
       if(result.rows.length === 0){
           res.send(403).send("username/password is invalid.");
       }else{
-          //var dbPassword=
+          var dbPassword=result.rows[0].password;
+          var salt=dbPassword.split('$')[2];
+          var hashedPassword=hash(dbPassword,salt);
+          if(hashedPassword===dbPassword){
+              res.send("user successfully logged in!!!!");
+          }else{
+              res.status(403).send("username/password is invalid.");
+          }
       }
   }   
     });
