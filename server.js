@@ -204,7 +204,7 @@ app.post('/login',function(req,res){
   }else{
       var hashPassword_from_DB=JSON.stringify(result);
       if(result.rows.length === 0){
-          res.send(403).send("username/password is invalid.");
+          res.status(403).send("user does not exists.");
       }else{
           var dbPassword=result.rows[0].password;
           var salt=dbPassword.split('$')[2];
