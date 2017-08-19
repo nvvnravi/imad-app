@@ -92,13 +92,12 @@ request.onreadystatechange=function(){
  }
 };
 
- alert("2");
 //Now Make the request
 var userName = document.getElementById('username');
 var userPassword = document.getElementById('password');
 request.open('POST','http://nvvnravi.imad.hasura-app.io//login',true);
 request.setRequestHeader('Content-Type',"application/json");
-request.send(JSON.stringify({"username":userName.value,"password":userPassword.value}));
+request.send(JSON.stringify({username:userName.value,password:userPassword.value}));
  alert("4");
 }
 
