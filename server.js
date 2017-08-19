@@ -164,7 +164,7 @@ return ["pbkdf2","100000",salt,key.toString('hex')].join('$');
 }
 
 app.get('/hash/:inputValue',function(req,res){
-    var hashValue=hash(req.params.inputValue);
+    var hashValue=hash(req.params.inputValue,'This-is-a-test-salt');
     res.send(hashValue);
 }
 );
