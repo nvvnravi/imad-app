@@ -211,7 +211,7 @@ app.post('/login',function(req,res){
           console.log(dbPassword);
           var salt=dbPassword.split('$')[2];
           console.log("Salt :"+salt);
-          var hashedPassword=hash(dbPassword,salt);
+          var hashedPassword=hash(passwordValue,salt);
           console.log(hashedPassword);
           if(hashedPassword===dbPassword){
               res.send("user successfully logged in!!!!\n");
