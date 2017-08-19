@@ -83,11 +83,13 @@ var request=new XMLHttpRequest();
  alert("1");
 request.onreadystatechange=function(){
  alert("3");
- if(request.readyState===4 && request.status===200){
+ if(request.readyState===4){
+ if( request.status===200){
  alert("user is logged in");
      
  }else{
      alert("user invalid");
+ }
  }
 };
 
