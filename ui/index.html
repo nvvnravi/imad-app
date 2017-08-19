@@ -86,8 +86,12 @@ request.onreadystatechange=function(){
 };
 
  alert("2");
-
-
+//Now Make the request
+var userName = document.getElementById('username');
+var userPassword = document.getElementById('password');
+request.open('POST','/login',true);
+request.send(JSON.stringify({"username":userName.value,"password":userPassword.value}));
+ alert("4");
 }
 
 function compare(a, b) {
