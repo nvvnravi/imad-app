@@ -186,7 +186,7 @@ app.post('/create-user',function(req,res){
      if(err){
       res.send("Error in getting records from DB"+err.toString());
   }else{
-    res.send('User Successfully Created!!!');
+    res.send('User Successfully Created!!!\n');
   }   
     });
 });
@@ -204,15 +204,15 @@ app.post('/login',function(req,res){
   }else{
       var hashPassword_from_DB=JSON.stringify(result);
       if(result.rows.length === 0){
-          res.status(403).send("user does not exists.");
+          res.status(403).send("user does not exists.\n");
       }else{
           var dbPassword=result.rows[0].password;
           var salt=dbPassword.split('$')[2];
           var hashedPassword=hash(dbPassword,salt);
           if(hashedPassword===dbPassword){
-              res.send("user successfully logged in!!!!");
+              res.send("user successfully logged in!!!!\n");
           }else{
-              res.status(403).send("username/password is invalid.");
+              res.status(403).send("username/password is invalid.\n");
           }
       }
   }   
