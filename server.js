@@ -207,8 +207,11 @@ app.post('/login',function(req,res){
           res.status(403).send("user does not exists.\n");
       }else{
           var dbPassword=result.rows[0].password;
+          console.log(dbPassword);
           var salt=dbPassword.split('$')[2];
+          console.log(salt);
           var hashedPassword=hash(dbPassword,salt);
+          console.log(hashedPassword);
           if(hashedPassword===dbPassword){
               res.send("user successfully logged in!!!!\n");
           }else{
