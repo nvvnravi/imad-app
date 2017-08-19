@@ -161,15 +161,15 @@ app.get('/', function (req, res) {
 function hash(input){
 var salt=crypto.randomBytes(128).toString('hex');
 const key = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
-//console.log(key.toString('hex'));  // '3745e48...aa39b34'    
-return key.toString('hex');
+ 
+return ["pbkdf2","100000",salt,key.toString('hex')].join($);
 }
 
-//app.get('/hash/:inputValue',function(req,res){
-//    var hashValue=hash(req.params.inputValue);
-//    res.send(hashValue);
-//}
-//);
+app.get('/hash/:inputValue',function(req,res){
+    var hashValue=hash(req.params.inputValue);
+    res.send(hashValue);
+}
+);
 
 var client=new pool(config);
 app.post('/create-user',function(req,res){
@@ -203,13 +203,20 @@ app.post('/login',function(req,res){
     //Now get the hashedpassword from the database
     client.query("select password from   user1 where username=$1",[userName], (err,result) => {
      if(err){
-      res.send("Error in getting records from DB"+err.toString());
+      res.status(500).send("Error in getting records from DB"+err.toString());
   }else{
       var hashPassword_from_DB=JSON.stringify(result);
+      /**
       if(hashPassword === hashPassword_from_DB){
         res.send('User Successfully Logged In');
       }else{
           res.send('User credentials are incorrect');
+      }
+      */
+      if(result.rows.length === 0){
+          res.send(403).send("username/password is invalid.");
+      }else{
+          //var dbPassword=
       }
   }   
     });
