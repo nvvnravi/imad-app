@@ -76,6 +76,27 @@ inputName.value='';
 
 }
 
+function login(){
+var request=new XMLHttpRequest();
+request.onreadystatechange=function(){
+	if(request.readyState===4 && request.status===200){
+	console.log("user is logged in");
+	alert('logged in successfull');
+	}else(requet.status===403){
+	    console.log("username /password is invalid.");
+	alert('username /password is invalid.');
+	}
+};
+
+//Now Make the request
+var userName = document.getElementById('username');
+var userPassword = document.getElementById('password');
+request.open('POST','/login',true);
+request.send(JSON.stringify({"username":userName.value,"password":userPassword.value}));
+
+
+}
+
 function compare(a, b) {
   if (a<b) {
     return -1;
@@ -115,14 +136,19 @@ function compare(a, b) {
         </div>
         
         <hr/>
+        <div>
+            <input type="text" id="username" name="username" placeholder="username"/>
+            <input type="password" id="passsword" name="password"/>
+            <input type="submit" id="loginSubmit"  name="loginSubmit" onclick="login();" value="Login"/>
+        </div>
         <div class="footer">
         This button <button id="myButton" onClick="javascript:testfunc();">Click Me!</button> has been clicked <span id="spanCount">0</span> times. 
         </div>
         <hr/>
         <!-- Add logic for name capture -->
         <label for="name">Enter Name :</label>
-        <input type="text" name="name" id="name" placeholder="name"></input>
-        <input type="submit" name="sbt_btn" id="sbt_btn" onclick="AddName();"  value="Add Name"></input>
+        <input type="text" name="name" id="name" placeholder="name"/>
+        <input type="submit" name="sbt_btn" id="sbt_btn" onclick="AddName();"  value="Add Name"/>
         <div>
         <span>Sorted Names :</span>
         <ul id="namelist" name="namelist">
