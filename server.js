@@ -179,6 +179,7 @@ app.post('/create-user',function(req,res){
     console.log("Password: "+passwordValue);
     //Convert the password into a hashedPassword
     var salt=crypto.randomBytes(128).toString('hex');
+    console.log("Salt : "+salt);
     var hashPassword = hash(passwordValue,salt);
     console.log("hashPassword  :  "+hashPassword);
     //Now insert the user in the table with the passsword
@@ -194,6 +195,7 @@ app.post('/create-user',function(req,res){
 app.post('/login',function(req,res){
     //read username from the request body
     var userName=req.body.username;
+    console.log("UserName : "+userName);
    //read password from the request body
     var passwordValue=req.body.password;
     
@@ -208,7 +210,7 @@ app.post('/login',function(req,res){
           var dbPassword=result.rows[0].password;
           console.log(dbPassword);
           var salt=dbPassword.split('$')[2];
-          console.log(salt);
+          console.log("Salt :"+salt);
           var hashedPassword=hash(dbPassword,salt);
           console.log(hashedPassword);
           if(hashedPassword===dbPassword){
