@@ -162,7 +162,7 @@ function hash(input){
 var salt=crypto.randomBytes(128).toString('hex');
 const key = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
  
-return ["pbkdf2","100000",salt,key.toString('hex')].join($);
+return ["pbkdf2","100000",salt,key.toString('hex')].join('$');
 }
 
 app.get('/hash/:inputValue',function(req,res){
