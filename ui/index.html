@@ -78,16 +78,16 @@ inputName.value='';
 
 function login(){
    var request=new XMLHttpRequest();
- alert("2");
+
 request.onreadystatechange=function(){
- alert("3");
+ 
  if(request.readyState===4){
     if( request.status===200){
-        alert("user is logged in");
+        alert("user successfully logged in.");
      }else if(request.status===403){
-        alert("user invalid");
+        alert("username/password is  invalid.");
     }else if(request.status===500){
-         alert("Something went wrong on server");
+         alert("Something went wrong on server.");
     }
  }
 };
@@ -100,7 +100,7 @@ var userPassword = document.getElementById('password').value;
 request.open('POST','http://nvvnravi.imad.hasura-app.io/login',true);
 request.setRequestHeader('Content-Type','application/json');
 request.send(JSON.stringify({username:userName,password:userPassword}));
- alert("4");
+ 
 }
 
 function compare(a, b) {
