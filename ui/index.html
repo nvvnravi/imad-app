@@ -77,10 +77,8 @@ inputName.value='';
 }
 
 function login(){
-    alert("login");
+   var request=new XMLHttpRequest();
 
-var request=new XMLHttpRequest();
- alert("1");
 request.onreadystatechange=function(){
  alert("3");
  if(request.readyState===4){
