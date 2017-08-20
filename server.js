@@ -268,7 +268,7 @@ counter=counter+1;
 app.get('/articles/:articleName', function (req, res) {
 client.query("SELECT * from article where name=$1",[req.params.articleName], (err, result) => {
   if(err){
-      res.send("Error in getting records from DB"+err.toString());
+      res.send("Error in getting article from DB"+err.toString());
   }else{
     if(result.rows.lenth === 0){
         res.status(404).send("Article NOT Found!!!");
@@ -284,7 +284,17 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
 
 app.post('/listarticles', function (req, res) {
 client.query("SELECT * from article" , (err, result) => {
-  
+  if(err){
+      res.send("Error in getting list of articles from DB"+err.toString());
+  }else{
+    if(result.rows.lenth === 0){
+        res.status(404).send("No Articles are  Found!!!");
+    }else {
+        var articleData=result.rows[0];
+     res.send(generateArticleFromDB(articleData));
+        
+    }
+    }
    
   });
 });
