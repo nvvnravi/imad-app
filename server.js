@@ -243,7 +243,7 @@ request.send();
         <span>
         <div id="commentArea" name="commentArea">
         <input type="textarea" name="comment" id="comment"/>
-        <input type="button" name="cmt_sbt_btn"  value="AddComment" name="cmt_sbt_btn" onclick="javascript:addComment('+document.getElementById('comment').value+','+articleId+','+user+');"/>
+        <input type="button" name="cmt_sbt_btn"  value="AddComment" name="cmt_sbt_btn" onclick="javascript:addComment(document.getElementById('comment').value,articleId,user);"/>
         </div>
         <span id="commentHistory" name="commentHistory">
         <span>
