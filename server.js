@@ -279,9 +279,7 @@ client.query('SELECT * from user1', (err, result) => {
   }else{
     res.send(JSON.stringify(result));
   }
-    
 });
-
 });
 
 
