@@ -142,7 +142,8 @@ var user=null;
 function checkLogin(){
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
-if(request.readyState===4 && request.status===200){
+if(request.readyState===4 ){
+if( request.status===200){
 var userid=request.responseText;
     if(userid ==='false'){
         //var spanTagValue=document.getElementById('spanCount');
@@ -151,6 +152,7 @@ var userid=request.responseText;
     }else{
      user=parserInt(userid);
     }
+}
 }
 };
 //Now Make the request
@@ -161,7 +163,8 @@ request.send();
 function addComment(comment,articleId,userId){
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
-if(request.readyState===4 && request.status===200){
+if(request.readyState===4){
+if( request.status===200){
 var userid=request.responseText;
     if(userid ==='true'){
         getCommentHistory(articleId);
@@ -169,6 +172,7 @@ var userid=request.responseText;
      var spanTagValue=document.getElementById('errorArea');
     errorArea.innerHTML=request.responseText;
      }
+}
 }
 };
 //Now Make the request
@@ -180,10 +184,15 @@ request.send(JSON.stringify({comment:comment,articleId:articleId,userId:userId})
 function getCommentHistory(articleId){
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
-if(request.readyState===4 && request.status===200){
+if(request.readyState===4){
+if( request.status===200){
 var spanTagValue=document.getElementById('commentHistory');
 spanTagValue.innerHTML=request.responseText;
     
+}else{
+    var spanTagValue=document.getElementById('errorArea');
+    errorArea.innerHTML=request.responseText;
+}
 }
 };
 //Now Make the request
