@@ -320,7 +320,7 @@ app.post('/getCommentHistory',function(req,res){
     console.log("articleId: "+articleId);
     
     //Now get all the comments from the comments Table
-    client.query("select * from   comment where article_id=$1",[articleId], (err,result) => {
+    client.query("select * from   comment where article_id=$1",[parseInt(articleId)], (err,result) => {
      if(err){
       res.status(404).send("Error in comments from DB"+err.toString());
   }else{
