@@ -50,9 +50,30 @@ if(request.readyState===4){
 request.open('GET','/logout',true);
 request.send();
 }
+var user=null;
+function checkLogin(){
+var request=new XMLHttpRequest();
+request.onreadystatechange=function(){
+if(request.readyState===4 ){
+if( request.status===200){
+var userid=request.responseText;
+    if(userid ==='false'){
+      
+        
+    }else{
+     user=parserInt(userid);
+     //display add article button 
+    }
+}
+}
+};
+//Now Make the request
+request.open('GET','/checkLogin');
+request.send();
+}
         </script>
     </head>
-    <body onLoad="getArticleList();">
+    <body onLoad="onload="checkLogin();getArticleList();">
     <div Class="container">
         <div class="center">
       <div class="center">Click on article to view comments.
