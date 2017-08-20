@@ -283,7 +283,7 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
 });
 
 
-app.get('/listArticles', function (req, res) {
+app.post('/listArticles', function (req, res) {
 client.query("SELECT * from article" , (err, result) => {
   if(err){
       res.status(404).send("Error in getting list of articles from DB"+err.toString());
