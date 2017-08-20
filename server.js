@@ -160,8 +160,8 @@ request.open('GET','/checkLogin');
 request.send();
 }
 
-function addComment(comment,articleId,userId){
-alert("comment :"+comment+"    articleId:"+articleId+"    userId:"+userId);
+function addComment(articleId){
+
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState===4){
@@ -177,9 +177,11 @@ var userid=request.responseText;
 }
 };
 //Now Make the request
+var commentValue=document.getElementById('comment').value;
+alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+user);
 request.open('POST','http://nvvnravi.imad.hasura-app.io/addComment',true);
 request.setRequestHeader('Content-Type','application/json');
-request.send(JSON.stringify({comment:comment,articleId:articleId,userId:userId}));
+request.send(JSON.stringify({comment:commentValue,articleId:articleId,userId:user}));
 }
 
 function getCommentHistory(articleId){
@@ -244,7 +246,7 @@ request.send();
         <span>
         <div id="commentArea" name="commentArea">
         <input type="textarea" name="comment" id="comment"/>
-        <input type="button" name="cmt_sbt_btn"  value="AddComment" name="cmt_sbt_btn" onclick="javascript:addComment(document.getElementById('comment').value,articleId,user);"/>
+        <input type="button" name="cmt_sbt_btn"  value="AddComment" name="cmt_sbt_btn" onclick="javascript:addComment(articleId);"/>
         </div>
         <span id="commentHistory" name="commentHistory">
         <span>
