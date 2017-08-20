@@ -115,6 +115,10 @@ var articleHTMLTemplate=`
 return articleHTMLTemplate;
 }
 
+function composeArticleList(articleContent){
+    
+}
+
 function generateArticleFromDB(articleContent){
 
 var title=articleContent.title;
@@ -254,7 +258,6 @@ counter=counter+1;
 });
 
 app.get('/articles/:articleName', function (req, res) {
-
 client.query("SELECT * from article where name=$1",[req.params.articleName], (err, result) => {
   if(err){
       res.send("Error in getting records from DB"+err.toString());
@@ -268,8 +271,6 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
     }
     }
   });
-
-    
 });
 
 app.get('/:articleName', function (req, res) {
@@ -277,7 +278,38 @@ var articleNameParam=req.params.articlvareName;
 res.send(generateHTML(contents[articleNameParam]));
 });
 
+app.get('/articles/:articleName', function (req, res) {
+client.query("SELECT * from article where name=$1",[req.params.articleName], (err, result) => {
+  if(err){
+      res.send("Error in getting records from DB"+err.toString());
+  }else{
+    if(result.rows.lenth === 0){
+        res.status(404).send("Article NOT Found!!!");
+    }else {
+        var articleData=result.rows[0];
+     res.send(generateArticleFromDB(articleData));
+        
+    }
+    }
+  });
+});
 
+app.post('/listarticles', function (req, res) {
+client.query("SELECT * from article , (err, result) => {
+  if(err){
+      res.send("Error in getting articles from DB"+err.toString());
+  }else{
+    if(result.rows.lenth === 0){
+        res.status(404).send("No Articles Found!!!");
+    }else {
+        
+        for(var i = 0; i < result.rows.length;i++){
+        res,send(composeArticleList(result.rows[i]));
+        }
+    }
+    }
+  });
+});
 
 
 /** Old Code not optimzed
