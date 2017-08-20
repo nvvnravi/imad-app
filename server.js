@@ -4,6 +4,7 @@ var path = require('path');
 var pool=require('pg').Pool;
 const crypto = require('crypto');
 var bodyParser=require('body-parser');
+var session=require('express-session');
 
 var config={
   user: 'nvvnravi',
@@ -17,6 +18,10 @@ var config={
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+app.use(session({
+    secret:"some_random_value",
+    cookie:{maxAge:1000*60*60}
+}));
 
 //Create JS array of HTML template pages
 var contents={
@@ -209,6 +214,13 @@ app.post('/create-user',function(req,res){
   }   
     });
 });
+app.get('/checkLogin',function(req,res){
+  if(req.session && req.session.auth && req.session.auth.userid){
+  res.send('You are logged in  :'+req.session.auth.userid.toString());
+  }else{
+    res.send('you are not logged in.');  
+  }
+});
 //POST method to login into the application
 app.post('/login',function(req,res){
     //read username from the request body
@@ -231,7 +243,12 @@ app.post('/login',function(req,res){
           var hashedPassword=hash(passwordValue,salt);
           //console.log(hashedPassword);
           if(hashedPassword===dbPassword){
+              //set the session cookie here
+              req.session.auth={userid: result.rows[0].id}
+              //send the response
               res.send("user successfully logged in!!!!\n");
+              
+              
           }else{
               res.status(403).send("username/password is invalid.\n");
           }
