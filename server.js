@@ -163,14 +163,11 @@ var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState===4 && request.status===200){
 var userid=request.responseText;
-    if(userid ==='false'){
-        //var spanTagValue=document.getElementById('spanCount');
-        //spanTagValue.innerHTML=currentCounter.toString();
-        document.getElementById('spanCount').style.display='none';
+    if(userid ==='true'){
+        getCommentHistory(articleId);
     }else{
-     user=parserInt(userid);
-     getCommentHistory(articleId);
-    }
+     
+     }
 }
 };
 //Now Make the request
