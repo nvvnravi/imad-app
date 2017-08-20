@@ -30,6 +30,16 @@ request.onreadystatechange=function(){
 request.open('POST','http://nvvnravi.imad.hasura-app.io/listArticles',true);
 request.send();
 }
+
+function logout(){
+var request=new XMLHttpRequest();
+request.onreadystatechange=function(){
+
+};
+//Now Make the request
+request.open('GET','/logout',true);
+request.send();
+}
         </script>
     </head>
     <body onLoad="getArticleList();">
