@@ -4,7 +4,7 @@
         <link href="/ui/style.css" rel="stylesheet" />
          <script type="text/javascript" >
 function getArticleList(){
-     alert("1");
+     
    var request=new XMLHttpRequest();
 
 request.onreadystatechange=function(){
@@ -22,17 +22,15 @@ request.onreadystatechange=function(){
     }
  }
 };
-
-
 request.open('POST','http://nvvnravi.imad.hasura-app.io/listArticles',true);
 request.send();
- 
 }
         </script>
     </head>
     <body onLoad="getArticleList();">
     <div class="container">
-      <div>Artcle List.Click on the link to view comments.</div>  
+        
+      <div>Artcle List.Click on the link to view comments. To write comments you need to <a href="/">Go To HomePage </a> to sign in.</div>  
       <div class="articlearea">
            <ul id="articlelist" name="articlelist">
         </ul>
