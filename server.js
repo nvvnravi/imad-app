@@ -115,7 +115,7 @@ var articleHTMLTemplate=`
 return articleHTMLTemplate;
 }
 
-function composeArticleList(articleContent){
+function composeArticleList(articles){
     
 }
 
