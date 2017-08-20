@@ -295,19 +295,9 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
 });
 
 app.post('/listarticles', function (req, res) {
-client.query("SELECT * from article , (err, result) => {
-  if(err){
-      res.send("Error in getting articles from DB"+err.toString());
-  }else{
-    if(result.rows.lenth === 0){
-        res.status(404).send("No Articles Found!!!");
-    }else {
-        
-        for(var i = 0; i < result.rows.length;i++){
-        res,send(composeArticleList(result.rows[i]));
-        }
-    }
-    }
+client.query("SELECT * from article" , (err, result) => {
+  
+   
   });
 });
 
