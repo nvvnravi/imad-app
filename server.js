@@ -195,7 +195,7 @@ app.post('/create-user',function(req,res){
 app.post('/login',function(req,res){
     //read username from the request body
     var userName=req.body.username;
-    console.log("UserName : "+userName);
+    //console.log("UserName : "+userName);
    //read password from the request body
     var passwordValue=req.body.password;
     
@@ -208,11 +208,11 @@ app.post('/login',function(req,res){
           res.status(403).send("user does not exists.\n");
       }else{
           var dbPassword=result.rows[0].password;
-          console.log(dbPassword);
+          //console.log(dbPassword);
           var salt=dbPassword.split('$')[2];
-          console.log("Salt :"+salt);
+          //console.log("Salt :"+salt);
           var hashedPassword=hash(passwordValue,salt);
-          console.log(hashedPassword);
+          //console.log(hashedPassword);
           if(hashedPassword===dbPassword){
               res.send("user successfully logged in!!!!\n");
           }else{
