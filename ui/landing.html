@@ -4,6 +4,7 @@
         <link href="/ui/style.css" rel="stylesheet" />
          <script type="text/javascript" >
 function getArticleList(){
+     alert("1");
    var request=new XMLHttpRequest();
 
 request.onreadystatechange=function(){
@@ -15,7 +16,7 @@ request.onreadystatechange=function(){
         	var ul1=document.getElementById('articlelist');
 		ul1.innerHTML=request.responseText;
      }else if(request.status===403){
-        alert("username/password is  invalid.");
+        alert("Could not get Article List.");
     }else if(request.status===500){
          alert("Something went wrong on server.");
     }
