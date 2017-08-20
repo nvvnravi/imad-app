@@ -232,7 +232,7 @@ request.send();
         </div>
         <span id="commentHistory" name="commentHistory">
         <span>
-        <input type="button" name="logout_btn"  name="logout_btn" onclick="javascript:logout(); value="Logout"/>
+        <input type="button" name="logout_btn"  id="logout_btn" onclick="javascript:logout();" value="Logout"/>
         </div>
     </body>
 </html>
