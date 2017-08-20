@@ -162,6 +162,12 @@ var counter=0;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
+app.get('/:articleName', function (req, res) {
+var articleNameParam=req.params.articlvareName;
+res.send(generateHTML(contents[articleNameParam]));
+});
+
 //Function to calculate Hash
 function hash(input,salt){
 const key = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
@@ -273,10 +279,7 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
   });
 });
 
-app.get('/:articleName', function (req, res) {
-var articleNameParam=req.params.articlvareName;
-res.send(generateHTML(contents[articleNameParam]));
-});
+
 
 app.get('/articles/:articleName', function (req, res) {
 client.query("SELECT * from article where name=$1",[req.params.articleName], (err, result) => {
