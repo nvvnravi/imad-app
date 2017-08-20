@@ -283,7 +283,7 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
 });
 
 
-app.post('/listarticles', function (req, res) {
+app.post('/listArticles', function (req, res) {
 client.query("SELECT * from article" , (err, result) => {
   if(err){
       res.send("Error in getting list of articles from DB"+err.toString());
@@ -291,7 +291,10 @@ client.query("SELECT * from article" , (err, result) => {
     if(result.rows.lenth === 0){
         res.status(404).send("No Articles are  Found!!!");
     }else {
+        var liststart='<ul id="articlelist" name="articlelist">';
+        var listend='</ul>';
         for(var i=0; j=result.rows.length,i<j; i++){
+        
         
     }
         
