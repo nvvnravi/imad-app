@@ -221,6 +221,11 @@ app.get('/checkLogin',function(req,res){
     res.send('you are not logged in.');  
   }
 });
+
+app.get('/logout',function(req,res){
+  delete req.session.auth;
+  res.send('Log out Successfully!!!');
+});
 //POST method to login into the application
 app.post('/login',function(req,res){
     //read username from the request body
