@@ -264,7 +264,7 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
     }else {
         var articleData=result.rows[0];
      res.send(generateArticleFromDB(articleData));
-        //res.send("Found Article!!!"+result.rows[0].title);
+        
     }
     }
   });
@@ -272,10 +272,10 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
     
 });
 
-//app.get('/:articleName', function (req, res) {
-//var articleNameParam=req.params.articlvareName;
-//res.send(generateHTML(contents[articleNameParam]));
-//});
+app.get('/:articleName', function (req, res) {
+var articleNameParam=req.params.articlvareName;
+res.send(generateHTML(contents[articleNameParam]));
+});
 
 
 
