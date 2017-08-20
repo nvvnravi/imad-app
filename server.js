@@ -128,6 +128,7 @@ var title=articleContent.title;
 var heading=articleContent.heading;
 var textContent=articleContent.content;
 var date=articleContent.date;
+var articleId=articleContent.id;
 
 var articleHTMLTemplate=`
 <!doctype html>
@@ -139,23 +140,21 @@ var articleHTMLTemplate=`
        <meta name="viewport" content="width-device-width,initial-scale=1"/>
         <link href="/ui/style.css" rel="stylesheet" />
          <script type="text/javascript" >
-function addComment(){
-var request=new XMLHttpRequest();
-	
-	request.onreadystatechange=function(){
 
+function addComment(commentValue,articleId){
+var request=new XMLHttpRequest();
+request.onreadystatechange=function(){
 if(request.readyState===4 && request.status===200){
 var currentCounter=request.responseText;
 var spanTagValue=document.getElementById('spanCount');
 spanTagValue.innerHTML=currentCounter.toString();
 }
 };
-
 //Now Make the request
 request.open('GET','/counter');
 request.send();
+}
 
-}         
     </head>
     <body>
     <div class="contaner">
@@ -174,7 +173,9 @@ request.send();
         </div>
         <div>
         <input type="textarea" name="comment" id="comment"/>
-        <inout type="button" name="cmt_sbt_btn"  name="cmt_sbt_btn" onclick="javascript:addComment();"/>
+        <span id="commentHistory" name="commentHistory">
+        <span>
+        <inout type="button" name="cmt_sbt_btn"  name="cmt_sbt_btn" onclick="javascript:addComment('+document.getElementById('comment').value+','+articleId+');"/>
         </div>
     </body>
 </html>
@@ -233,7 +234,7 @@ app.post('/create-user',function(req,res){
 app.get('/checkLogin',function(req,res){
   if(req.session && req.session.auth && req.session.auth.userid){
   //res.send('You are logged in  :'+req.session.auth.userid.toString());
-  res.send('true');
+  res.send(req.session.auth.userid.toString());
   }else{
     //res.send('you are not logged in.');  
     res.send('false');
