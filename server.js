@@ -283,7 +283,7 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
 });
 
 
-app.post('/listArticles', function (req, res) {
+app.get('/listArticles', function (req, res) {
 client.query("SELECT * from article" , (err, result) => {
   if(err){
       res.status(404).send("Error in getting list of articles from DB"+err.toString());
@@ -302,7 +302,9 @@ client.query("SELECT * from article" , (err, result) => {
   });
 });
 
-
+app.get('/landingPage', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'landing.html'));
+});
 /** Old Code not optimzed
  app.get('/article-one', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
