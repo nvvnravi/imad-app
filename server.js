@@ -140,18 +140,23 @@ var articleHTMLTemplate=`
        <meta name="viewport" content="width-device-width,initial-scale=1"/>
         <link href="/ui/style.css" rel="stylesheet" />
          <script type="text/javascript" >
-
-function addComment(commentValue,articleId){
+var user;
+function checkLogin(){
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState===4 && request.status===200){
-var currentCounter=request.responseText;
-var spanTagValue=document.getElementById('spanCount');
-spanTagValue.innerHTML=currentCounter.toString();
+var userid=request.responseText;
+    if(userid==='false'){
+        //var spanTagValue=document.getElementById('spanCount');
+        //spanTagValue.innerHTML=currentCounter.toString();
+        ocument.getElementById('spanCount').style.display='none';
+    }else{
+     user=parserInt(userid);
+    }
 }
 };
 //Now Make the request
-request.open('GET','/counter');
+request.open('GET','/checkLogin');
 request.send();
 }
 
@@ -172,10 +177,13 @@ request.send();
         ${textContent}
         </div>
         <div>
+        <div id="commentArea" name="commentArea">
         <input type="textarea" name="comment" id="comment"/>
+        <input type="button" name="cmt_sbt_btn"  name="cmt_sbt_btn" onclick="javascript:addComment('+document.getElementById('comment').value+','+articleId+','+user+');"/>
+        </div>
         <span id="commentHistory" name="commentHistory">
         <span>
-        <inout type="button" name="cmt_sbt_btn"  name="cmt_sbt_btn" onclick="javascript:addComment('+document.getElementById('comment').value+','+articleId+');"/>
+        
         </div>
     </body>
 </html>
