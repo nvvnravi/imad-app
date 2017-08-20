@@ -120,8 +120,6 @@ var articleHTMLTemplate=`
 return articleHTMLTemplate;
 }
 
-
-
 function generateArticleFromDB(articleContent){
 
 var title=articleContent.title;
