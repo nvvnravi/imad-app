@@ -139,7 +139,7 @@ var articleHTMLTemplate=`
     <body>
     <div class="contaner">
         <div>
-        <a href="/">Go To HomePage</a>
+        <a href="/listArticles">Go To Article List</a>
         </div>
         <hr/>
         <h1>
