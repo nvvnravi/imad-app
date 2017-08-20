@@ -163,8 +163,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/:articleName', function (req, res) {
-var articleNameParam=req.params.articlvareName;
+app.get('/:articleName1', function (req, res) {
+var articleNameParam=req.params.articlvareName;1
 res.send(generateHTML(contents[articleNameParam]));
 });
 
