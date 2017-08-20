@@ -100,7 +100,8 @@ request.onreadystatechange=function(){
  if(request.readyState===4){
     if( request.status===200){
         alert("user successfully logged in.");
-         GoToLandingPage();
+         //GoToLandingPage();
+         window.location.href = "/landingPage";
      }else if(request.status===403){
         alert("username/password is  invalid.");
     }else if(request.status===500){
