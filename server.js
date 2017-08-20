@@ -293,7 +293,7 @@ client.query("SELECT * from article" , (err, result) => {
     }else {
         var list='';
         for(var i=0; j=result.rows.length,i<j; i++){
-        list+= '<li>'+JSON.stringify(result.rows[i].title)+'</li>';
+        list+= '<li>'+result.rows[i].title+'</li>';
         }
         res.status(200).send(list);
         }
