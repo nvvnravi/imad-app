@@ -60,7 +60,7 @@ a2:`CSS is used to define styles for your web pages, including the design, layou
 };
 function generateHTML( content){
 
-var title=content.title;
+var title1=content.title;
 var heading=content.heading
 var q1=content.q1;
 var a1=content.a1;
@@ -73,7 +73,7 @@ var articleHTMLTemplate=`
 <html>
     <head>
     <Title>
-       ${title}
+       ${title1}
        </Title>
        <meta name="viewport" content="width-device-width,initial-scale=1"/>
         <link href="/ui/style.css" rel="stylesheet" />
