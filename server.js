@@ -275,9 +275,10 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
     }else {
         var articleData=result.rows[0];
      res.send(generateArticleFromDB(articleData));
-        
+     
+     
     }
-    }
+  }
   });
 });
 
@@ -290,8 +291,12 @@ client.query("SELECT * from article" , (err, result) => {
     if(result.rows.lenth === 0){
         res.status(404).send("No Articles are  Found!!!");
     }else {
+        for(var i=0; j=result.rows.length,i<j; i++){
+        
+    }
+        
         var articleData=result.rows[0];
-     res.send(generateArticleFromDB(articleData));
+        res.send(generateArticleFromDB(articleData));
         
     }
     }
