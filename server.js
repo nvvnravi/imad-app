@@ -178,7 +178,7 @@ app.get('/hash/:inputValue',function(req,res){
 );
 
 app.get('/:articleName1', function (req, res) {
-var articleNameParam=req.params.articlvareName;1
+var articleNameParam=req.params.articlvareName1;
 res.send(generateHTML(contents[articleNameParam]));
 });
 //create database pool
