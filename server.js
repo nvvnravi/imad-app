@@ -146,9 +146,7 @@ if(request.readyState===4 ){
 if( request.status===200){
 var userid=request.responseText;
     if(userid ==='false'){
-        //var spanTagValue=document.getElementById('spanCount');
-        //spanTagValue.innerHTML=currentCounter.toString();
-        Document.getElementById('spanCount').style.display='none';
+        Document.getElementById('commentArea').style.display='none';
     }else{
      user=parserInt(userid);
     }
@@ -172,7 +170,7 @@ var responseValue=request.responseText;
         getCommentHistory(articleId);
     }else{
      var spanTagValue=document.getElementById('errorArea');
-    errorArea.innerHTML=request.responseText;
+    spanTagValue.innerHTML=request.responseText;
      }
 }
 }
@@ -197,7 +195,7 @@ spanTagValue.innerHTML=request.responseText;
     
 }else{
     var spanTagValue=document.getElementById('errorArea');
-    errorArea.innerHTML=request.responseText;
+    spanTagValue.innerHTML=request.responseText;
 }
 }
 };
