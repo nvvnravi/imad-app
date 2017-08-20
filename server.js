@@ -226,7 +226,8 @@ app.get('/checkLogin',function(req,res){
 
 app.get('/logout',function(req,res){
   delete req.session.auth;
-  res.send('Log out Successfully!!!');
+  //res.send('Log out Successfully!!!');
+  res.send('true');
 });
 
 //POST method to login into the application
