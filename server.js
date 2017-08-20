@@ -166,7 +166,8 @@ var userid=request.responseText;
     if(userid ==='true'){
         getCommentHistory(articleId);
     }else{
-     
+     var spanTagValue=document.getElementById('errorArea');
+    errorArea.innerHTML=request.responseText;
      }
 }
 };
@@ -205,7 +206,7 @@ request.send();
     <body onload="javascript:checkLogin();">
     <div class="contaner">
         <div>
-        <a href="/listArticles">Go To Article List</a>
+        <a href="/listArticles">Go To Article Details</a>
         </div>
         <hr/>
         <h1>
@@ -218,6 +219,8 @@ request.send();
         ${textContent}
         </div>
         <div>
+         <span id="errorArea" name="errorArea">
+        <span>
         <div id="commentArea" name="commentArea">
         <input type="textarea" name="comment" id="comment"/>
         <input type="button" name="cmt_sbt_btn"  value="AddComment" name="cmt_sbt_btn" onclick="javascript:addComment('+document.getElementById('comment').value+','+articleId+','+user+');"/>
