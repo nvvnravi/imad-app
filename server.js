@@ -293,7 +293,7 @@ client.query("SELECT * from article" , (err, result) => {
     }else {
         var list='';
         for(var i=0; j=result.rows.length,i<j; i++){
-        list+= '<li><p><a href="showArticelDetail(/articles/'+result.rows[i].name+');" onclick="showArticelDetail(/articles/'+result.rows[i].name+');">'+result.rows[i].title+'</a></p></li>';
+        list+= '<li><p><a href="/articles/'+result.rows[i].name+');" onclick="showArticelDetail(/articles/'+result.rows[i].name+');">'+result.rows[i].title+'</a></p></li>';
         }
         res.status(200).send(list);
         }
