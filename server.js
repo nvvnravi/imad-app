@@ -204,7 +204,17 @@ request.send(JSON.stringify({articleId:articleId}));
 function logout(){
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
-
+if(request.readyState===4){
+    if( request.status===200){
+        //alert(request.responseText);
+        
+		 window.location.href = "/";
+     }else if(request.status===403){
+        alert("Could not log you out.");
+    }else if(request.status===500){
+         alert("Something went wrong on server.");
+    }
+ }
 };
 //Now Make the request
 request.open('GET','/logout',true);
