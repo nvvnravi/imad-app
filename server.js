@@ -60,7 +60,7 @@ a2:`CSS is used to define styles for your web pages, including the design, layou
 };
 function generateHTML( content){
 
-var title1=content.title1;
+//var title1=content.title1;
 var heading=content.heading
 var q1=content.q1;
 var a1=content.a1;
