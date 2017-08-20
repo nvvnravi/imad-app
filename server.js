@@ -225,7 +225,7 @@ request.send();
     <body onload="javascript:checkLogin();getCommentHistory('+articleId+');">
     <div class="contaner">
         <div>
-        <a href="/listArticles">Go To Article Details</a>
+        <a href="/landingPage">Go To Article List</a>
         </div>
         <hr/>
         <h1>
