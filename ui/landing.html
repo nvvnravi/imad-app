@@ -10,8 +10,10 @@ request.onreadystatechange=function(){
  
  if(request.readyState===4){
     if( request.status===200){
-        alert("user successfully logged in.");
+        
         //write code to go to article page
+        	var ul1=document.getElementById('articlelist');
+		ul1.innerHTML=request.responseText;
      }else if(request.status===403){
         alert("username/password is  invalid.");
     }else if(request.status===500){
@@ -27,7 +29,7 @@ request.open('POST','http://nvvnravi.imad.hasura-app.io/listArticles',true);
 }
         </script>
     </head>
-    <body>
+    <body onload="getArticleList();">
     <div class="container">
       <div>Artcle List.Click on the link to view comments.</div>  
       <div class="articlearea">
