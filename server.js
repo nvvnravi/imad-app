@@ -158,7 +158,7 @@ request.open('GET','/checkLogin');
 request.send();
 }
 
-function addComment(articleId){
+function addComment(){
 alert("1");
 var request=new XMLHttpRequest();
 alert("2");
@@ -167,7 +167,7 @@ if(request.readyState===4){
 if( request.status===200){
 var responseValue=request.responseText;
     if(responseValue ==='true'){
-        getCommentHistory(articleId);
+        getCommentHistory(2);
     }else{
      var spanTagValue=document.getElementById('errorArea');
     spanTagValue.innerHTML=request.responseText;
@@ -246,7 +246,7 @@ request.send();
         <span>
         <div id="commentArea" name="commentArea">
         <textarea rows="4" cols="50" name="comment" id="comment" >Enter text here....</textarea>
-        <input type="button" name="cmt_sbt_btn"  value="AddComment" id="cmt_sbt_btn" onclick="javascript:addComment(articleId);"/>
+        <input type="button" name="cmt_sbt_btn"  value="AddComment" id="cmt_sbt_btn" onclick="javascript:addComment();"/>
         </div>
         <span id="commentHistory" name="commentHistory">
         <span>
