@@ -286,22 +286,17 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
 app.post('/listArticles', function (req, res) {
 client.query("SELECT * from article" , (err, result) => {
   if(err){
-      res.send("Error in getting list of articles from DB"+err.toString());
+      res.status(404).send("Error in getting list of articles from DB"+err.toString());
   }else{
     if(result.rows.lenth === 0){
         res.status(404).send("No Articles are  Found!!!");
     }else {
-        var liststart='<ul id="articlelist" name="articlelist">';
-        var listend='</ul>';
+        var list='';
         for(var i=0; j=result.rows.length,i<j; i++){
-        
-        
-    }
-        
-        var articleData=result.rows[0];
-        res.send(generateArticleFromDB(articleData));
-        
-    }
+        list+= '<li>'+result.rows[i]+'</li>';
+        }
+        res.status(200).send(list);
+        }
     }
    
   });
