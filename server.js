@@ -219,7 +219,7 @@ request.send();
         ${textContent}
         </div>
         <div>
-         <span id="errorArea" name="errorArea">
+         <span id="errorArea" name="errorArea" style="color:red;">
         <span>
         <div id="commentArea" name="commentArea">
         <input type="textarea" name="comment" id="comment"/>
