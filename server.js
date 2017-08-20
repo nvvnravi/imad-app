@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 //Create JS array of HTML template pages
 var contents={
 'article-one':{
-title:'JavaScript',
+title1:'JavaScript',
 heading:"About JavaScript",
 q1:"what is Javascript?",
 a1:`JavaScript is a scripting language designed primarily for adding interactivity to Web pages and creating Web applications. 
@@ -36,7 +36,7 @@ a2:`<ol>
 </ol>`
 },
 'article-two':{
-title:'HTML',
+title1:'HTML',
 heading:'About HTML',
 q1:'what is HTML?',
 a1:`HTML is a computer language devised to allow website creation. 
@@ -49,7 +49,7 @@ a2:`<ol>
 </ol>`
 },
 'article-three':{
-title:'CSS',
+title1:'CSS',
 heading:'About CSS',
 q1:'what is CSS?',
 a1:'CSS is the language for describing the presentation of Web pages, including colors, layout, and fonts. It allows one to adapt the presentation to different types of devices, such as large screens, small screens, or printers. CSS is independent of HTML and can be used with any XML-based markup language.',
@@ -60,7 +60,7 @@ a2:`CSS is used to define styles for your web pages, including the design, layou
 };
 function generateHTML( content){
 
-var title1=content.title;
+var title1=content.title1;
 var heading=content.heading
 var q1=content.q1;
 var a1=content.a1;
