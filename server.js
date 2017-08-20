@@ -120,9 +120,7 @@ var articleHTMLTemplate=`
 return articleHTMLTemplate;
 }
 
-function composeArticleList(articles){
-    
-}
+
 
 function generateArticleFromDB(articleContent){
 
@@ -140,6 +138,24 @@ var articleHTMLTemplate=`
        </Title>
        <meta name="viewport" content="width-device-width,initial-scale=1"/>
         <link href="/ui/style.css" rel="stylesheet" />
+         <script type="text/javascript" >
+function addComment(){
+var request=new XMLHttpRequest();
+	
+	request.onreadystatechange=function(){
+
+if(request.readyState===4 && request.status===200){
+var currentCounter=request.responseText;
+var spanTagValue=document.getElementById('spanCount');
+spanTagValue.innerHTML=currentCounter.toString();
+}
+};
+
+//Now Make the request
+request.open('GET','/counter');
+request.send();
+
+}         
     </head>
     <body>
     <div class="contaner">
@@ -301,9 +317,7 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
     }else {
         var articleData=result.rows[0];
      res.send(generateArticleFromDB(articleData));
-     
-     
-    }
+     }
   }
   });
 });
