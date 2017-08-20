@@ -183,14 +183,9 @@ function getCommentHistory(articleId){
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState===4 && request.status===200){
-var userid=request.responseText;
-    if(userid ==='false'){
-        //var spanTagValue=document.getElementById('spanCount');
-        //spanTagValue.innerHTML=currentCounter.toString();
-        document.getElementById('spanCount').style.display='none';
-    }else{
-     user=parserInt(userid);
-    }
+var spanTagValue=document.getElementById('commentHistory');
+spanTagValue.innerHTML=request.responseText;
+    
 }
 };
 //Now Make the request
@@ -270,13 +265,13 @@ var client=new pool(config);
 app.post('/create-user',function(req,res){
     //read username from the request body
     var userName=req.body.username;
-    console.log("UserName : "+userName);
+    //console.log("UserName : "+userName);
     //read password from the request body
     var passwordValue=req.body.password;
-    console.log("Password: "+passwordValue);
+    //console.log("Password: "+passwordValue);
     //Convert the password into a hashedPassword
     var salt=crypto.randomBytes(128).toString('hex');
-    console.log("Salt : "+salt);
+    //console.log("Salt : "+salt);
     var hashPassword = hash(passwordValue,salt);
     console.log("hashPassword  :  "+hashPassword);
     //Now insert the user in the table with the passsword
@@ -288,6 +283,53 @@ app.post('/create-user',function(req,res){
   }   
     });
 });
+
+app.post('/addComment',function(req,res){
+    //read comment from the request body
+    var comment=req.body.comment;
+    console.log("comment : "+comment);
+    //read articleI d from the request body
+    var articleId=req.body.articleId;
+    console.log("articleId: "+articleId);
+    //read user id from the request
+    var userId=req.body.userId;
+    console.log("userId : "+userId);
+    //Now insert the comment in comment Table
+    client.query("INSERT into  comment  (comment,article_id,user_id) values ($1,$2,$3)",[comment,articleId,userId], (err,result) => {
+     if(err){
+      res.send('false');
+  }else{
+    res.send('true');
+  }   
+    });
+});
+
+app.post('/getCommentHistory',function(req,res){
+    
+    //read article Id from the request body
+    var articleId=req.body.articleId;
+    console.log("articleId: "+articleId);
+    
+    //Now get all the comments from the comments Table
+    client.query("select * from   comment where article_id=$1",[articleId], (err,result) => {
+     if(err){
+      res.status(404).send("Error in comments from DB"+err.toString());
+  }else{
+    if(result.rows.lenth === 0){
+        res.status(404).send("No comments Found for this Article!!!");
+    }else {
+        var list='';
+        for(var i=0; j=result.rows.length,i<j; i++){
+        list+= '<p>'+result.rows[i].comment+'</p>';
+        }
+        res.status(200).send(list);
+        }
+    }
+    });
+});
+
+
+
 app.get('/checkLogin',function(req,res){
   if(req.session && req.session.auth && req.session.auth.userid){
   //res.send('You are logged in  :'+req.session.auth.userid.toString());
