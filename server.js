@@ -161,13 +161,14 @@ request.send();
 }
 
 function addComment(articleId){
-
+alert("1");
 var request=new XMLHttpRequest();
+alert("2");
 request.onreadystatechange=function(){
 if(request.readyState===4){
 if( request.status===200){
-var userid=request.responseText;
-    if(userid ==='true'){
+var responseValue=request.responseText;
+    if(responseValue ==='true'){
         getCommentHistory(articleId);
     }else{
      var spanTagValue=document.getElementById('errorArea');
@@ -178,6 +179,7 @@ var userid=request.responseText;
 };
 //Now Make the request
 var commentValue=document.getElementById('comment').value;
+alert("3");
 alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+user);
 request.open('POST','http://nvvnravi.imad.hasura-app.io/addComment',true);
 request.setRequestHeader('Content-Type','application/json');
@@ -309,13 +311,13 @@ app.post('/create-user',function(req,res){
 
 app.post('/addComment',function(req,res){
     //read comment from the request body
-    var comment=req.body.comment;
+    var comment=req.body.commentValue;
     console.log("comment : "+comment);
     //read articleI d from the request body
     var articleId=req.body.articleId;
     console.log("articleId: "+articleId);
     //read user id from the request
-    var userId=req.body.userId;
+    var userId=req.body.user;
     console.log("userId : "+userId);
     //Now insert the comment in comment Table
     client.query("INSERT into  comment  (comment,article_id,user_id) values ($1,$2,$3)",[comment,parseInt(articleId),parseInt(userId)], (err,result) => {
