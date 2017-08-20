@@ -154,22 +154,24 @@ return articleHTMLTemplate;
 }
 
 var counter=0;
+//Go to Landing Page
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-
+//Function to calculate Hash
 function hash(input,salt){
 const key = crypto.pbkdf2Sync(input, salt, 100000, 512, 'sha512');
 return ["pbkdf2","100000",salt,key.toString('hex')].join('$');
 }
-
+//GET method for calculating hashValue of a value
 app.get('/hash/:inputValue',function(req,res){
     var hashValue=hash(req.params.inputValue,'This-is-a-test-salt');
     res.send(hashValue);
 }
 );
-
+//create database pool
 var client=new pool(config);
+//POST method to create a new user
 app.post('/create-user',function(req,res){
     //read username from the request body
     var userName=req.body.username;
@@ -191,14 +193,13 @@ app.post('/create-user',function(req,res){
   }   
     });
 });
-
+//POST method to login into the application
 app.post('/login',function(req,res){
     //read username from the request body
     var userName=req.body.username;
     //console.log("UserName : "+userName);
    //read password from the request body
     var passwordValue=req.body.password;
-    
     //Now get the hashedpassword from the database
     client.query("select password from   user1 where username=$1",[userName], (err,result) => {
      if(err){
