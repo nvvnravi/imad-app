@@ -138,7 +138,7 @@ var articleHTMLTemplate=`
        <meta name="viewport" content="width-device-width,initial-scale=1"/>
         <link href="/ui/style.css" rel="stylesheet" />
          <script type="text/javascript" >
-         var articleId=articleId;
+         var articleId= ${articleId};
 var user=null;
 function checkLogin(){
 var request=new XMLHttpRequest();
