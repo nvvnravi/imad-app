@@ -138,7 +138,7 @@ var articleHTMLTemplate=`
        <meta name="viewport" content="width-device-width,initial-scale=1"/>
         <link href="/ui/style.css" rel="stylesheet" />
          <script type="text/javascript" >
-var user;
+var user=null;
 function checkLogin(){
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
@@ -147,7 +147,7 @@ var userid=request.responseText;
     if(userid ==='false'){
         //var spanTagValue=document.getElementById('spanCount');
         //spanTagValue.innerHTML=currentCounter.toString();
-        ocument.getElementById('spanCount').style.display='none';
+        Document.getElementById('spanCount').style.display='none';
     }else{
      user=parserInt(userid);
     }
@@ -166,19 +166,51 @@ var userid=request.responseText;
     if(userid ==='false'){
         //var spanTagValue=document.getElementById('spanCount');
         //spanTagValue.innerHTML=currentCounter.toString();
-        ocument.getElementById('spanCount').style.display='none';
+        document.getElementById('spanCount').style.display='none';
+    }else{
+     user=parserInt(userid);
+     getCommentHistory(articleId);
+    }
+}
+};
+//Now Make the request
+request.open('POST','http://nvvnravi.imad.hasura-app.io/addComment',true);
+request.setRequestHeader('Content-Type','application/json');
+request.send(JSON.stringify({comment:comment,articleId:articleId,userId:userId}));
+}
+
+function getCommentHistory(articleId){
+var request=new XMLHttpRequest();
+request.onreadystatechange=function(){
+if(request.readyState===4 && request.status===200){
+var userid=request.responseText;
+    if(userid ==='false'){
+        //var spanTagValue=document.getElementById('spanCount');
+        //spanTagValue.innerHTML=currentCounter.toString();
+        document.getElementById('spanCount').style.display='none';
     }else{
      user=parserInt(userid);
     }
 }
 };
 //Now Make the request
-request.open('GET','/checkLogin');
-request.send();
+request.open('POST','http://nvvnravi.imad.hasura-app.io/getCommentHistory',true);
+request.setRequestHeader('Content-Type','application/json');
+request.send(JSON.stringify({articleId:articleId}));
 }
 
+function logout(){
+var request=new XMLHttpRequest();
+request.onreadystatechange=function(){
+
+};
+//Now Make the request
+request.open('GET','/logout',true);
+request.send();
+}
+</script>
     </head>
-    <body>
+    <body onload="javascript:checkLogin();">
     <div class="contaner">
         <div>
         <a href="/listArticles">Go To Article List</a>
@@ -196,11 +228,11 @@ request.send();
         <div>
         <div id="commentArea" name="commentArea">
         <input type="textarea" name="comment" id="comment"/>
-        <input type="button" name="cmt_sbt_btn"  name="cmt_sbt_btn" onclick="javascript:addComment('+document.getElementById('comment').value+','+articleId+','+user+');"/>
+        <input type="button" name="cmt_sbt_btn"  value="AddComment" name="cmt_sbt_btn" onclick="javascript:addComment('+document.getElementById('comment').value+','+articleId+','+user+');"/>
         </div>
         <span id="commentHistory" name="commentHistory">
         <span>
-        
+        <input type="button" name="logout_btn"  name="logout_btn" onclick="javascript:logout(); value="Logout"/>
         </div>
     </body>
 </html>
@@ -269,7 +301,8 @@ app.get('/checkLogin',function(req,res){
 app.get('/logout',function(req,res){
   delete req.session.auth;
   //res.send('Log out Successfully!!!');
-  res.send('true');
+  //res.send('true');
+   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 //POST method to login into the application
