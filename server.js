@@ -60,7 +60,7 @@ a2:`CSS is used to define styles for your web pages, including the design, layou
 };
 function generateHTML( content){
 
-//var title1=content.title1;
+var title1=content.title1;
 var heading=content.heading
 var q1=content.q1;
 var a1=content.a1;
@@ -279,23 +279,6 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
   });
 });
 
-
-
-app.get('/articles/:articleName', function (req, res) {
-client.query("SELECT * from article where name=$1",[req.params.articleName], (err, result) => {
-  if(err){
-      res.send("Error in getting records from DB"+err.toString());
-  }else{
-    if(result.rows.lenth === 0){
-        res.status(404).send("Article NOT Found!!!");
-    }else {
-        var articleData=result.rows[0];
-     res.send(generateArticleFromDB(articleData));
-        
-    }
-    }
-  });
-});
 
 app.post('/listarticles', function (req, res) {
 client.query("SELECT * from article" , (err, result) => {
