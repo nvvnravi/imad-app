@@ -177,7 +177,7 @@ app.get('/hash/:inputValue',function(req,res){
 }
 );
 
-app.get('/:articleName', function (req, res) {
+app.get('article/:articleName', function (req, res) {
 var articleNameParam=req.params.articleName;
 res.send(generateHTML(contents[articleNameParam]));
 });
