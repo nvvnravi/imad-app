@@ -182,6 +182,7 @@ request.send(JSON.stringify({comment:comment,articleId:articleId,userId:userId})
 }
 
 function getCommentHistory(articleId){
+alert("articleId :"+articleId);
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState===4){
@@ -332,7 +333,7 @@ app.post('/getCommentHistory',function(req,res){
     //Now get all the comments from the comments Table
     client.query("select * from   comment where article_id=$1",[parseInt(articleId)], (err,result) => {
      if(err){
-      res.status(404).send("Error in comments from DB"+err.toString());
+      res.status(404).send("Error in getCommentHistory from DB"+err.toString());
   }else{
     if(result.rows.lenth === 0){
         res.status(404).send("No comments Found for this Article!!!");
