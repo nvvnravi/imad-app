@@ -271,8 +271,6 @@ names.push(reqName);
 res.send(JSON.stringify(names.sort()));
 });
 
-
-
 app.get('/testdb', function (req, res) {
     
 client.query('SELECT * from user1', (err, result) => {
