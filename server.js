@@ -161,6 +161,7 @@ request.send();
 }
 
 function addComment(comment,articleId,userId){
+alert("comment :"+comment+"    articleId:"+articleId+"    userId:"+userId);
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState===4){
