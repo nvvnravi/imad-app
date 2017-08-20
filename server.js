@@ -163,10 +163,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/:articleName1', function (req, res) {
-var articleNameParam=req.params.articlvareName;1
-res.send(generateHTML(contents[articleNameParam]));
-});
+
 
 //Function to calculate Hash
 function hash(input,salt){
@@ -179,6 +176,11 @@ app.get('/hash/:inputValue',function(req,res){
     res.send(hashValue);
 }
 );
+
+app.get('/:articleName1', function (req, res) {
+var articleNameParam=req.params.articlvareName;1
+res.send(generateHTML(contents[articleNameParam]));
+});
 //create database pool
 var client=new pool(config);
 //POST method to create a new user
