@@ -151,6 +151,10 @@ var articleHTMLTemplate=`
         </h2>
         ${textContent}
         </div>
+        <div>
+        <input type="textarea" name="comment" id="comment"/>
+        <inout type="button" name="cmt_sbt_btn"  name="cmt_sbt_btn" onclick="javascript:addComment();"/>
+        </div>
     </body>
 </html>
 `;
