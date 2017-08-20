@@ -216,9 +216,11 @@ app.post('/create-user',function(req,res){
 });
 app.get('/checkLogin',function(req,res){
   if(req.session && req.session.auth && req.session.auth.userid){
-  res.send('You are logged in  :'+req.session.auth.userid.toString());
+  //res.send('You are logged in  :'+req.session.auth.userid.toString());
+  res.send('true');
   }else{
-    res.send('you are not logged in.');  
+    //res.send('you are not logged in.');  
+    res.send('false');
   }
 });
 
