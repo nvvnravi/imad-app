@@ -402,7 +402,7 @@ app.post('/login',function(req,res){
           //console.log(hashedPassword);
           if(hashedPassword===dbPassword){
               //set the session cookie here
-              req.session.auth={userid: result.rows[0].id}
+              req.session.auth={userid: result.rows[0].id};
               //send the response
               res.status(200).send("user successfully logged in!!!!\n");
              
