@@ -387,7 +387,7 @@ app.post('/login',function(req,res){
    //read password from the request body
     var passwordValue=req.body.password;
     //Now get the hashedpassword from the database
-    client.query("select password from   user1 where username=$1",[userName], (err,result) => {
+    client.query("select * from   user1 where username=$1",[userName], (err,result) => {
      if(err){
       res.status(500).send("Error in getting records from DB"+err.toString());
   }else{
