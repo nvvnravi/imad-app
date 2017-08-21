@@ -160,7 +160,7 @@ request.send();
 }
 
 function addComment(){
-alert("articleId  :"+articleId);
+alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+user);
 var request=new XMLHttpRequest();
 alert("2");
 request.onreadystatechange=function(){
@@ -179,14 +179,14 @@ var responseValue=request.responseText;
 //Now Make the request
 var commentValue=document.getElementById('comment').value;
 alert("3");
-alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+user);
+
 request.open('POST','http://nvvnravi.imad.hasura-app.io/addComment',true);
 request.setRequestHeader('Content-Type','application/json');
 request.send(JSON.stringify({comment:commentValue,articleId:articleId,userId:user}));
 }
 
 function getCommentHistory(articleId){
-alert("articleId  :"+articleId);
+
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState===4){
@@ -249,9 +249,9 @@ request.send();
         <textarea rows="4" cols="50" name="comment" id="comment" >Enter text here....</textarea>
         <input type="button" name="cmt_sbt_btn"  value="AddComment" id="cmt_sbt_btn" onclick="javascript:addComment();"/>
         </div>
-        <span id="commentHistory" name="commentHistory">
-        <span>
         <input type="button" name="logout_btn"  id="logout_btn" onclick="javascript:logout();" value="Logout"/>
+         <span id="commentHistory" name="commentHistory">
+        <span>
         </div>
     </body>
 </html>
