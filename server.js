@@ -139,7 +139,7 @@ var articleHTMLTemplate=`
         <link href="/ui/style.css" rel="stylesheet" />
          <script type="text/javascript" >
          var articleId= ${articleId};
-var user=;
+var user;
 function checkLogin(){
 alert("1");
 var request=new XMLHttpRequest();
