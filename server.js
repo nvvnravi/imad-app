@@ -139,18 +139,20 @@ var articleHTMLTemplate=`
         <link href="/ui/style.css" rel="stylesheet" />
          <script type="text/javascript" >
          var articleId= ${articleId};
-var user=null;
+var user=;
 function checkLogin(){
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState===4 ){
 if( request.status===200){
 var userid=request.responseText;
+alert("userid  :"+userid);
     if(userid ==='false'){
         Document.getElementById('commentArea').style.display='none';
     }else{
-    alert("user :"+user);
+   
      user=parserInt(userid);
+      alert("user :"+user);
     }
 }
 }
