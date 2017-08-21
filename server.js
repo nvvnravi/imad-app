@@ -363,9 +363,9 @@ app.post('/getCommentHistory',function(req,res){
 
 
 app.get('/checkLogin',function(req,res){
-  if(req.session && req.session.auth && req.session.auth.userid){
+  if(req.session && req.session.auth && req.session.auth.userId){
   //res.send('You are logged in  :'+req.session.auth.userid.toString());
-  res.send(req.session.auth.userid.toString());
+  res.send(req.session.auth.userId.toString());
   }else{
     //res.send('you are not logged in.');  
     res.send('false');
