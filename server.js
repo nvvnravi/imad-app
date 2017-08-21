@@ -141,10 +141,13 @@ var articleHTMLTemplate=`
          var articleId= ${articleId};
 var user=;
 function checkLogin(){
+alert("1");
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState===4 ){
+alert("2");
 if( request.status===200){
+alert("3");
 var userid=request.responseText;
 alert("userid  :"+userid);
     if(userid ==='false'){
@@ -189,15 +192,17 @@ request.send(JSON.stringify({comment:commentValue,articleId:articleId,userId:use
 }
 
 function getCommentHistory(articleId){
-
+alert("1");
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState===4){
+alert("2");
 if( request.status===200){
 var spanTagValue=document.getElementById('commentHistory');
 spanTagValue.innerHTML=request.responseText;
     
 }else{
+alert("3");
     var spanTagValue=document.getElementById('errorArea');
     spanTagValue.innerHTML=request.responseText;
 }
