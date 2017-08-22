@@ -146,7 +146,7 @@ request.send();
 
 
 function generateArticleFromDB(articleContent,currentUserId){
-
+alert("currentUserId  : "+currentUserId);
 var title=articleContent.title;
 var heading=articleContent.heading;
 var textContent=articleContent.content;
