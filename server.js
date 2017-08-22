@@ -142,29 +142,21 @@ var articleHTMLTemplate=`
          var articleId= ${articleId};
 
 function checkLogin(){
-
 var request=new XMLHttpRequest();
-
 request.onreadystatechange=function(){
-
 if(request.readyState===4 ){
-
     if( request.status===200){
-
     var userid=request.responseText;
      alert("checkLogin :"+userid);
         if(userid === 'false'){
-        
              Document.getElementById('commentArea').style.display='none';
         }
 }
 }
 };
 //Now Make the request
-
 request.open('GET','/checkLogin');
 request.send();
-
 }
 
 
