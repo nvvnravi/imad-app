@@ -326,7 +326,7 @@ app.post('/create-user',function(req,res){
 
 app.post('/addComment',function(req,res){
     //read comment from the request body
-    var comment=req.body.commentValue;
+    var comment=req.body.comment;
     console.log("comment : "+comment);
     //read articleI d from the request body
     var articleId=req.body.articleId;
