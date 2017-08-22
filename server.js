@@ -189,11 +189,11 @@ alert("3");
         }
 }
 }
-
+};
 //Now Make the request
 request.open('GET','/checkLogin');
 request.send();
-}
+
 alert("7");
 return response;
 }
