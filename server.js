@@ -180,6 +180,7 @@ if(request.readyState===4 ){
 request.open('GET','/checkLogin');
 request.send();
 }
+}
 
 function addComment(userId){
 var userId=getUserId();
