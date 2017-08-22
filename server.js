@@ -147,10 +147,9 @@ request.onreadystatechange=function(){
 if(request.readyState===4 ){
     if( request.status===200){
     var userid=request.responseText;
-   //  alert("userid :"+userid);
+     alert("checkLogin :"+userid);
         if(userid === 'false'){
              Document.getElementById('commentArea').style.display='none';
-           
         }
 }
 }
@@ -167,7 +166,7 @@ request.onreadystatechange=function(){
 if(request.readyState===4 ){
     if( request.status===200){
     var userid=request.responseText;
-     alert("userid :"+userid);
+     alert("getUserId :"+userid);
         if(userid === 'false'){
  return "";
            
@@ -184,7 +183,7 @@ request.send();
 
 function addComment(userId){
 var userId=getUserId();
-alert(userId);
+alert("addComment  :"+userId);
 var request=new XMLHttpRequest();
 
 request.onreadystatechange=function(){
@@ -271,8 +270,10 @@ request.send();
         ${textContent}
         </div>
         <div>
+        <br/>
          <div id="errorArea" name="errorArea" style="color:red;">
         </div>
+        <br/>
         <div id="commentArea" name="commentArea">
         <textarea rows="4" cols="50" name="comment" id="comment" >Enter text here....</textarea>
         <input type="button" name="cmt_sbt_btn"  value="AddComment" id="cmt_sbt_btn" onclick="javascript:addComment(checkLogin());"/>
