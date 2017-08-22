@@ -203,6 +203,9 @@ if( request.status===200){
 var spanTagValue=document.getElementById('commentHistory');
 //alert("comment History :"+request.responseText);
 spanTagValue.innerHTML=request.responseText;
+  //clear if any errors are there
+  var errorValue=document.getElementById('errorArea');
+     errorValue.innerHTML='';
     
 }else{
 //alert("errorValue :"+request.responseText);
