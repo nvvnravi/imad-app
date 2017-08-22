@@ -128,7 +128,7 @@ if(request.readyState===4 ){
     var userid=request.responseText;
    //  alert("userid :"+userid);
         if(userid === 'false'){
-            Document.getElementById('commentArea').style.display='none';
+            
             return "";
         }else{
         alert("parseInt(userid) :"+parseInt(userid));
