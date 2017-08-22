@@ -150,9 +150,6 @@ if(request.readyState=== 4 ){
         if(request.responseText === 'false'){
        //alert("user not logged in");
              Document.getElementById('commentArea').style.display='none';
-             var commentArea=Document.getElementById('commentArea');
-              commentArea.innerHTML='';
-             
         }else{
             userId=request.responseText;
         }
