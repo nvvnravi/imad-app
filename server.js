@@ -198,12 +198,13 @@ if(request.readyState===4){
 
 if( request.status===200){
 var spanTagValue=document.getElementById('commentHistory');
+alert("comment History :"+request.responseText);
 spanTagValue.innerHTML=request.responseText;
     
 }else{
-alert("comment History :"+request.responseText);
-    var spanTagValue=document.getElementById('errorArea');
-    spanTagValue.innerHTML=request.responseText;
+alert("errorValue :"+request.responseText);
+    var errorValue=document.getElementById('errorArea');
+    errorValue.innerHTML=request.responseText;
 }
 }
 };
