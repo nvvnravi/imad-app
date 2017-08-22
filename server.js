@@ -168,7 +168,7 @@ if(request.readyState===4 ){
     var userid=request.responseText;
      alert("getUserId :"+userid);
         if(userid === 'false'){
- return "";
+ return '';
            
         }else {
             return userId;
