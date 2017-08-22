@@ -120,26 +120,6 @@ var articleHTMLTemplate=`
 return articleHTMLTemplate;
 }
 
-function generateArticleFromDB(articleContent){
-
-var title=articleContent.title;
-var heading=articleContent.heading;
-var textContent=articleContent.content;
-var date=articleContent.date;
-var articleId=articleContent.id;
-
-var articleHTMLTemplate=`
-<!doctype html>
-<html>
-    <head>
-    <Title>
-       ${title}
-       </Title>
-       <meta name="viewport" content="width-device-width,initial-scale=1"/>
-        <link href="/ui/style.css" rel="stylesheet" />
-         <script type="text/javascript" >
-         var articleId= ${articleId};
-
 function checkLogin(){
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
@@ -164,6 +144,35 @@ request.open('GET','/checkLogin');
 request.send();
 }
 
+
+function generateArticleFromDB(articleContent){
+
+var title=articleContent.title;
+var heading=articleContent.heading;
+var textContent=articleContent.content;
+var date=articleContent.date;
+var articleId=articleContent.id;
+var userId=checkLogin();
+var articleHTMLTemplate=`
+<!doctype html>
+<html>
+    <head>
+    <Title>
+       ${title}
+       </Title>
+       <meta name="viewport" content="width-device-width,initial-scale=1"/>
+        <link href="/ui/style.css" rel="stylesheet" />
+         <script type="text/javascript" >
+         var articleId= ${articleId};
+
+function isUserLoggedIn(){
+var user=${userId};
+alert("user : "+user);
+        if(user === 'false'){
+            Document.getElementById('commentArea').style.display='none';
+        }
+}
+
 function addComment(userId){
 
 var request=new XMLHttpRequest();
@@ -184,7 +193,7 @@ var responseValue=request.responseText;
 //Now Make the request
 var commentValue=document.getElementById('comment').value;
 
-alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+userId);
+alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+${userId});
 
 request.open('POST','http://nvvnravi.imad.hasura-app.io/addComment',true);
 request.setRequestHeader('Content-Type','application/json');
@@ -236,7 +245,7 @@ request.send();
 }
 </script>
     </head>
-    <body onload="javascript:checkLogin();getCommentHistory(articleId);">
+    <body onload="javascript:isUserLoggedIn();getCommentHistory(articleId);">
     <div class="contaner">
         <div>
         <a href="/landingPage">Go To Article List</a>
