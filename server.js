@@ -165,7 +165,7 @@ request.send();
 }
 
 function addComment(){
-
+var userId=checkLogin();
 var request=new XMLHttpRequest();
 
 request.onreadystatechange=function(){
@@ -183,7 +183,7 @@ var responseValue=request.responseText;
 };
 //Now Make the request
 var commentValue=document.getElementById('comment').value;
-var userId=checkLogin();
+
 alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+userId);
 
 request.open('POST','http://nvvnravi.imad.hasura-app.io/addComment',true);
