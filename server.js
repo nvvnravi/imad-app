@@ -122,7 +122,7 @@ return articleHTMLTemplate;
 
 
 function generateArticleFromDB(articleContent){
-alert("currentUserId  : "+currentUserId);
+
 var title=articleContent.title;
 var heading=articleContent.heading;
 var textContent=articleContent.content;
