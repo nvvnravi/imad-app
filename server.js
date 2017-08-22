@@ -162,7 +162,7 @@ request.send();
 }
 
 
-function addComment(userId){
+function addComment(){
 
 alert("addComment  :"+userId);
 var request=new XMLHttpRequest();
