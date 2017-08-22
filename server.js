@@ -145,14 +145,14 @@ request.send();
 }
 
 
-function generateArticleFromDB(articleContent){
+function generateArticleFromDB(articleContent,currentUserId){
 
 var title=articleContent.title;
 var heading=articleContent.heading;
 var textContent=articleContent.content;
 var date=articleContent.date;
 var articleId=articleContent.id;
-var userId=checkLogin();
+var userId=currentUserId;
 var articleHTMLTemplate=`
 <!doctype html>
 <html>
@@ -458,7 +458,7 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
         res.status(404).send("Article NOT Found!!!");
     }else {
         var articleData=result.rows[0];
-     res.send(generateArticleFromDB(articleData));
+     res.send(generateArticleFromDB(articleData,checkLogin()));
      }
   }
   });
