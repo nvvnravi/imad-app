@@ -148,9 +148,11 @@ if(request.readyState===4 ){
     var userid=request.responseText;
         if(userid ==='false'){
             Document.getElementById('commentArea').style.display='none';
+            return "";
         }else{
                var user=parserInt(userid);
                alert("user :"+user);
+               return user;
         }
 }
 }
@@ -179,7 +181,7 @@ var responseValue=request.responseText;
 };
 //Now Make the request
 var commentValue=document.getElementById('comment').value;
-alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+user);
+alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+checkLogin());
 
 request.open('POST','http://nvvnravi.imad.hasura-app.io/addComment',true);
 request.setRequestHeader('Content-Type','application/json');
