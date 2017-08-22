@@ -203,7 +203,7 @@ var responseValue=request.responseText;
 //Now Make the request
 var commentValue=document.getElementById('comment').value;
 
-alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+${userId});
+alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+userId);
 
 request.open('POST','http://nvvnravi.imad.hasura-app.io/addComment',true);
 request.setRequestHeader('Content-Type','application/json');
