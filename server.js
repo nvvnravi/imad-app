@@ -259,8 +259,8 @@ request.send();
         <input type="button" name="cmt_sbt_btn"  value="AddComment" id="cmt_sbt_btn" onclick="javascript:addComment();"/>
         </div>
         <input type="button" name="logout_btn"  id="logout_btn" onclick="javascript:logout();" value="Logout"/>
-         <span id="commentHistory" name="commentHistory">
-        <span>
+         <div id="commentHistory" name="commentHistory">
+        </div>
         </div>
     </body>
 </html>
