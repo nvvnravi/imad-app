@@ -201,13 +201,14 @@ if(request.readyState===4){
 
 if( request.status===200){
 var spanTagValue=document.getElementById('commentHistory');
-alert("comment History :"+request.responseText);
+//alert("comment History :"+request.responseText);
 spanTagValue.innerHTML=request.responseText;
     
 }else{
-alert("errorValue :"+request.responseText);
- errorValue.innerHTML='';
+//alert("errorValue :"+request.responseText);
+
     var errorValue=document.getElementById('errorArea');
+     errorValue.innerHTML='';
     errorValue.innerHTML=request.responseText;
 }
 }
