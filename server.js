@@ -162,6 +162,7 @@ request.send();
 
 function getUserId(){
 var request=new XMLHttpRequest();
+var response='';
 request.onreadystatechange=function(){
 if(request.readyState===4 ){
     if( request.status===200){
