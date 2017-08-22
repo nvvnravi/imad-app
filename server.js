@@ -163,14 +163,20 @@ request.send();
 function getUserId(){
 var request=new XMLHttpRequest();
 var response='';
+alert("1");
 request.onreadystatechange=function(){
+alert("2");
 if(request.readyState===4 ){
+alert("3");
     if( request.status===200){
+    alert("4");
     var userid=request.responseText;
      alert("getUserId :"+userid);
         if(userid === 'false'){
+        alert("5");
        response= '';
         }else {
+        alert("6");
             response= userId;
         }
 }
@@ -180,6 +186,7 @@ if(request.readyState===4 ){
 request.open('GET','/checkLogin');
 request.send();
 }
+alert("7");
 return response;
 }
 
