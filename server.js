@@ -151,7 +151,7 @@ if(request.readyState=== 4 ){
         alert("user not logged in");
              Document.getElementById('commentArea').style.display='none';
              var commentArea=Document.getElementById('commentArea');
-              commentArea.innerHTML=""request.responseText"";
+              commentArea.innerHTML='';
              
         }else{
             userId=request.responseText;
