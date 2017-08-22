@@ -151,7 +151,7 @@ if(request.readyState===4 ){
             Document.getElementById('commentArea').style.display='none';
             return "";
         }else{
-       // alert("parseInt(userid) :"+parseInt(userid));
+        alert("parseInt(userid) :"+parseInt(userid));
               return parseInt(userid);
                
                
