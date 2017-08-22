@@ -206,6 +206,7 @@ spanTagValue.innerHTML=request.responseText;
     
 }else{
 alert("errorValue :"+request.responseText);
+ errorValue.innerHTML='';
     var errorValue=document.getElementById('errorArea');
     errorValue.innerHTML=request.responseText;
 }
