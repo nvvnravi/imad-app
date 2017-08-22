@@ -142,21 +142,29 @@ var articleHTMLTemplate=`
          var articleId= ${articleId};
 
 function checkLogin(){
+alert("1");
 var request=new XMLHttpRequest();
+alert("2");
 request.onreadystatechange=function(){
+alert("3");
 if(request.readyState===4 ){
+alert("4");
     if( request.status===200){
+    alert("5");
     var userid=request.responseText;
      alert("checkLogin :"+userid);
         if(userid === 'false'){
+        alert("6");
              Document.getElementById('commentArea').style.display='none';
         }
 }
 }
 };
 //Now Make the request
+alert("7");
 request.open('GET','/checkLogin');
 request.send();
+alert("8");
 }
 
 
