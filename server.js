@@ -170,15 +170,19 @@ if(request.readyState===4){
 if( request.status===200){
 var responseValue=request.responseText;
     if(responseValue ==='true'){
+         var errorValue=document.getElementById('errorArea');
+    errorValue.innerHTML='';
         getCommentHistory(articleId);
     }else{
-     var spanTagValue=document.getElementById('errorArea');
-    spanTagValue.innerHTML=request.responseText;
+     var errorValue=document.getElementById('errorArea');
+    errorValue.innerHTML='';
+    //alert("errorValue :"+request.responseText);
+    errorValue.innerHTML=request.responseText;
      }
 }else{
      var errorValue=document.getElementById('errorArea');
     errorValue.innerHTML='';
-    alert("errorValue :"+request.responseText);
+    //alert("errorValue :"+request.responseText);
     errorValue.innerHTML=request.responseText;
 }
 }
