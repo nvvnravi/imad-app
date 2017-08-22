@@ -163,10 +163,8 @@ request.send();
 
 
 function addComment(){
-
 alert("addComment  :"+userId);
 var request=new XMLHttpRequest();
-
 request.onreadystatechange=function(){
 if(request.readyState===4){
 if( request.status===200){
