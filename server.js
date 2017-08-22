@@ -246,7 +246,7 @@ request.send();
 </script>
     </head>
     <body onload="javascript:isUserLoggedIn();getCommentHistory(articleId);">
-    <div class="contaner">
+    <div class="container">
         <div>
         <a href="/landingPage">Go To Article List</a>
         </div>
