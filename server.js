@@ -146,6 +146,7 @@ request.onreadystatechange=function(){
 if(request.readyState===4 ){
     if( request.status===200){
     var userid=request.responseText;
+     alert("userid :"+userid);
         if(userid ==='false'){
             Document.getElementById('commentArea').style.display='none';
             return "";
