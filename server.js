@@ -149,7 +149,7 @@ if(request.readyState=== 4 ){
     // alert("checkLogin :"+request.responseText);
         if(request.responseText === 'false'){
        //alert("user not logged in");
-             Document.getElementById('commentArea').style.display='none';
+            // Document.getElementById('commentArea').style.display='none';
              var commentArea=Document.getElementById('commentArea');
               commentArea.innerHTML='';
              
