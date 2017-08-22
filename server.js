@@ -188,7 +188,7 @@ alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+userId);
 
 request.open('POST','http://nvvnravi.imad.hasura-app.io/addComment',true);
 request.setRequestHeader('Content-Type','application/json');
-request.send(JSON.stringify({comment:commentValue,articleId:articleId,userId:user}));
+request.send(JSON.stringify({comment:commentValue,articleId:articleId,userId:userId}));
 }
 
 function getCommentHistory(articleId){
