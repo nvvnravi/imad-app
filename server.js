@@ -177,6 +177,11 @@ var responseValue=request.responseText;
      var spanTagValue=document.getElementById('errorArea');
     spanTagValue.innerHTML=request.responseText;
      }
+}else{
+     var errorValue=document.getElementById('errorArea');
+    errorValue.innerHTML='';
+    alert("errorValue :"+request.responseText);
+    errorValue.innerHTML=request.responseText;
 }
 }
 };
