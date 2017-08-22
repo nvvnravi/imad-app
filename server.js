@@ -164,10 +164,10 @@ request.open('GET','/checkLogin');
 request.send();
 }
 
-function addComment(){
+function addComment(userId){
 
 var request=new XMLHttpRequest();
-var userId=checkLogin();
+
 request.onreadystatechange=function(){
 if(request.readyState===4){
 if( request.status===200){
@@ -256,7 +256,7 @@ request.send();
         </div>
         <div id="commentArea" name="commentArea">
         <textarea rows="4" cols="50" name="comment" id="comment" >Enter text here....</textarea>
-        <input type="button" name="cmt_sbt_btn"  value="AddComment" id="cmt_sbt_btn" onclick="javascript:addComment();"/>
+        <input type="button" name="cmt_sbt_btn"  value="AddComment" id="cmt_sbt_btn" onclick="javascript:addComment(checkLogin());"/>
         </div>
         <input type="button" name="logout_btn"  id="logout_btn" onclick="javascript:logout();" value="Logout"/>
          <div id="commentHistory" name="commentHistory">
