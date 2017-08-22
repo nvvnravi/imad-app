@@ -151,9 +151,10 @@ if(request.readyState===4 ){
             Document.getElementById('commentArea').style.display='none';
             return "";
         }else{
-               var user=parserInt(userid);
-               alert("user :"+user);
-               return user;
+        alert("parserInt(userid) :"+parserInt(userid));
+              return parserInt(userid);
+               
+               
         }
 }
 }
