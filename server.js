@@ -121,16 +121,14 @@ return articleHTMLTemplate;
 }
 
 
-
-
-function generateArticleFromDB(articleContent,currentUserId){
+function generateArticleFromDB(articleContent){
 alert("currentUserId  : "+currentUserId);
 var title=articleContent.title;
 var heading=articleContent.heading;
 var textContent=articleContent.content;
 var date=articleContent.date;
 var articleId=articleContent.id;
-var userId=currentUserId;
+
 var articleHTMLTemplate=`
 <!doctype html>
 <html>
@@ -253,7 +251,7 @@ request.send();
 }
 </script>
     </head>
-    <body onload="javascript:isUserLoggedIn();getCommentHistory(articleId);">
+    <body onload="javascript:checkLogin();getCommentHistory(articleId);">
     <div class="container">
         <div>
         <a href="/landingPage">Go To Article List</a>
