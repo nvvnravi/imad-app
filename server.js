@@ -325,7 +325,7 @@ app.post('/addComment',function(req,res){
     var articleId=req.body.articleId;
     console.log("articleId: "+articleId);
     //read user id from the request
-    var userId=req.body.user;
+    var userId=req.body.userId;
     console.log("userId : "+userId);
     //Now insert the comment in comment Table
     client.query("INSERT into  comment  (comment,article_id,user_id) values ($1,$2,$3)",[comment,parseInt(articleId),parseInt(userId)], (err,result) => {
