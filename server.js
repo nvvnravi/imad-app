@@ -176,6 +176,10 @@ if(request.readyState===4 ){
         }
 }
 }
+
+//Now Make the request
+request.open('GET','/checkLogin');
+request.send();
 }
 
 function addComment(userId){
