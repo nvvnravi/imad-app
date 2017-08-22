@@ -268,7 +268,7 @@ request.send();
         ${date.toDateString()}
         </h2>
         ${textContent}
-        </div>
+       
         <div>
         <br/>
          <div id="errorArea" name="errorArea" style="color:red;">
@@ -282,6 +282,7 @@ request.send();
          <div id="commentHistory" name="commentHistory">
         </div>
         </div>
+         </div>
     </body>
 </html>
 `;
