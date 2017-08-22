@@ -140,16 +140,18 @@ var articleHTMLTemplate=`
         <link href="/ui/style.css" rel="stylesheet" />
          <script type="text/javascript" >
          var articleId= ${articleId};
-
+var userId="";
 function checkLogin(){
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState=== 4 ){
     if( request.status=== 200){
-    var userid=request.responseText;
-     alert("checkLogin :"+userid);
-        if(userid === 'false'){
+    
+     alert("checkLogin :"+request.responseText);
+        if(request.responseText === 'false'){
              Document.getElementById('commentArea').style.display='none';
+        }else{
+            userId=request.responseText;
         }
 }
 }
@@ -159,39 +161,9 @@ request.open('GET','/checkLogin');
 request.send();
 }
 
-
-function getUserId(){
-var request=new XMLHttpRequest();
-var response='';
-alert("1");
-request.onreadystatechange=function(){
-alert("2");
-if(request.readyState===4 ){
-alert("3");
-    if( request.status===200){
-    alert("4");
-    var userid=request.responseText;
-     alert("getUserId :"+userid);
-        if(userid === 'false'){
-        alert("5");
-       response= '';
-        }else {
-        alert("6");
-            response= userId;
-        }
-}
-}
-};
-//Now Make the request
-request.open('GET','/checkLogin');
-request.send();
-
-alert("7");
-return response;
-}
 
 function addComment(userId){
-var userId=getUserId();
+
 alert("addComment  :"+userId);
 var request=new XMLHttpRequest();
 
