@@ -347,7 +347,7 @@ app.post('/getCommentHistory',function(req,res){
      if(err){
       res.status(404).send("Error in getCommentHistory from DB"+err.toString());
   }else{
-    if(result.rows.lenth === 0){
+    if(result.rows.length === 0){
         res.status(404).send("No comments Found for this Article!!!");
     }else {
         var list='';
