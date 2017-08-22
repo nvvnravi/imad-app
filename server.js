@@ -149,7 +149,8 @@ if(request.readyState=== 4 ){
     // alert("checkLogin :"+request.responseText);
         if(request.responseText === 'false'){
        //alert("user not logged in");
-             Document.getElementById('commentArea').style.display='none';
+       var commentArea=Document.getElementById('commentArea');
+             commentArea.style.display='none';
         }else{
             userId=request.responseText;
         }
