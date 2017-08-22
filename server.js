@@ -168,10 +168,9 @@ if(request.readyState===4 ){
     var userid=request.responseText;
      alert("getUserId :"+userid);
         if(userid === 'false'){
- return '';
-           
+       response= '';
         }else {
-            return userId;
+            response= userId;
         }
 }
 }
@@ -180,6 +179,7 @@ if(request.readyState===4 ){
 request.open('GET','/checkLogin');
 request.send();
 }
+return response;
 }
 
 function addComment(userId){
