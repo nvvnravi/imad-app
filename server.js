@@ -251,8 +251,8 @@ request.send();
         ${textContent}
         </div>
         <div>
-         <span id="errorArea" name="errorArea" style="color:red;">
-        <span>
+         <div id="errorArea" name="errorArea" style="color:red;">
+        </div>
         <div id="commentArea" name="commentArea">
         <textarea rows="4" cols="50" name="comment" id="comment" >Enter text here....</textarea>
         <input type="button" name="cmt_sbt_btn"  value="AddComment" id="cmt_sbt_btn" onclick="javascript:addComment();"/>
