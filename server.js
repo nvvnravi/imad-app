@@ -120,29 +120,7 @@ var articleHTMLTemplate=`
 return articleHTMLTemplate;
 }
 
-function checkLogin(){
-var request=new XMLHttpRequest();
-request.onreadystatechange=function(){
-if(request.readyState===4 ){
-    if( request.status===200){
-    var userid=request.responseText;
-   //  alert("userid :"+userid);
-        if(userid === 'false'){
-            
-            return "";
-        }else{
-        alert("parseInt(userid) :"+parseInt(userid));
-              return parseInt(userid);
-               
-               
-        }
-}
-}
-};
-//Now Make the request
-request.open('GET','/checkLogin');
-request.send();
-}
+
 
 
 function generateArticleFromDB(articleContent,currentUserId){
@@ -165,16 +143,46 @@ var articleHTMLTemplate=`
          <script type="text/javascript" >
          var articleId= ${articleId};
 
-function isUserLoggedIn(){
-var user=${userId};
-alert("user : "+user);
-        if(user === 'false'){
-            Document.getElementById('commentArea').style.display='none';
+function checkLogin(){
+var request=new XMLHttpRequest();
+request.onreadystatechange=function(){
+if(request.readyState===4 ){
+    if( request.status===200){
+    var userid=request.responseText;
+   //  alert("userid :"+userid);
+        if(userid === 'false'){
+             Document.getElementById('commentArea').style.display='none';
+           
         }
+}
+}
+};
+//Now Make the request
+request.open('GET','/checkLogin');
+request.send();
+}
+
+
+function getUserId(){
+var request=new XMLHttpRequest();
+request.onreadystatechange=function(){
+if(request.readyState===4 ){
+    if( request.status===200){
+    var userid=request.responseText;
+   //  alert("userid :"+userid);
+        if(userid === 'false'){
+ return "";
+           
+        }else {
+            return userId;
+        }
+}
+}
 }
 
 function addComment(userId){
-
+var userId=getUserId();
+alert(userId);
 var request=new XMLHttpRequest();
 
 request.onreadystatechange=function(){
@@ -182,7 +190,7 @@ if(request.readyState===4){
 if( request.status===200){
 var responseValue=request.responseText;
     if(responseValue ==='true'){
-        getCommentHistory(2);
+        getCommentHistory(articleId);
     }else{
      var spanTagValue=document.getElementById('errorArea');
     spanTagValue.innerHTML=request.responseText;
