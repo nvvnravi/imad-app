@@ -165,9 +165,9 @@ request.send();
 }
 
 function addComment(){
-var userId=checkLogin();
-var request=new XMLHttpRequest();
 
+var request=new XMLHttpRequest();
+var userId=checkLogin();
 request.onreadystatechange=function(){
 if(request.readyState===4){
 if( request.status===200){
