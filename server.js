@@ -468,8 +468,8 @@ client.query("SELECT * from article where name=$1",[req.params.articleName], (er
         res.status(404).send("Article NOT Found!!!");
     }else {
         var articleData=result.rows[0];
-        var userId=checkLogin();
-     res.send(generateArticleFromDB(articleData,userId));
+        
+     res.send(generateArticleFromDB(articleData));
      }
   }
   });
