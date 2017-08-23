@@ -362,7 +362,7 @@ app.post('/getCommentHistory',function(req,res){
     //Now get all the comments from the comments Table
     client.query("select * from   comment where article_id=$1",[parseInt(articleId)], (err,result) => {
      if(err){
-      res.status(404).send("Error in getCommentHistory from DB"+err.toString());
+      res.status(500).send("Error in getCommentHistory from DB"+err.toString());
   }else{
     if(result.rows.length === 0){
         res.status(404).send("No comments Found for this Article!!!");
@@ -422,7 +422,8 @@ app.post('/login',function(req,res){
               //set the session cookie here
               req.session.auth={userId: result.rows[0].id};
               //send the response
-              res.status(200).send("user successfully logged in!!!!: "+req.session.auth.userId);
+             // res.status(200).send("user successfully logged in!!!!: "+req.session.auth.userId);
+              res.status(200).send("user successfully logged in!!! ");
              
                }else{
               res.status(403).send("username/password is invalid.\n");
