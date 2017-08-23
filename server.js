@@ -146,9 +146,9 @@ var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState=== 4 ){
     if( request.status=== 200){
-     alert("checkLogin :"+request.responseText);
+     //alert("checkLogin :"+request.responseText);
         if(request.responseText === 'false'){
-       //alert("user not logged in");
+       alert("user not logged in");
        var commentArea=Document.getElementById('commentArea');
        if (typeof(commentArea) != 'undefined' && commentArea != null)
 {
