@@ -119,8 +119,10 @@ request.onreadystatechange=function(){
          //window.location.href = "/landingPage";
      }else if(request.status===403){
         alert(request.responseText);
+         document.getElementById('registerUser').value='Register';
     }else if(request.status===500){
          alert(request.responseText);
+          document.getElementById('registerUser').value='Register';
     }
  }
 };
