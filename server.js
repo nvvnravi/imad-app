@@ -152,6 +152,7 @@ if(request.readyState=== 4 ){
        var commentArea=Document.getElementById('commentArea');
        if (typeof(commentArea) != 'undefined' && commentArea != null)
 {
+alert("comment area found");
               commentArea.style.display='none';
 }else{
  alert("comment area is null or undefined...");
