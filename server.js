@@ -271,6 +271,7 @@ request.send();
         <div id="commentArea" name="commentArea">
         <textarea rows="4" cols="50" name="comment" id="comment" >Enter text here....</textarea>
         <input type="button" name="cmt_sbt_btn"  value="AddComment" id="cmt_sbt_btn" onclick="javascript:addComment();"/>
+        <br/>
         <input type="button" name="logout_btn"  id="logout_btn" onclick="javascript:logout();" value="Logout"/>
         </div>
          <div id="commentHistory" name="commentHistory">
