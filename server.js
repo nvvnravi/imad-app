@@ -326,7 +326,7 @@ app.post('/create-user',function(req,res){
     //Now insert the user in the table with the passsword
     client.query("INSERT into  user1  (username,password) values ($1,$2)",[userName,hashPassword], (err,result) => {
      if(err){
-      res.send("Error in getting records from DB"+err.toString());
+      res.status(500).send("Error in getting records from DB"+err.toString());
   }else{
     res.send('User Successfully Created!!!\n');
   }   
