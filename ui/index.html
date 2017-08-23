@@ -84,13 +84,13 @@ request.onreadystatechange=function(){
  if(request.readyState===4){
     if( request.status===200){
         //alert("user successfully logged in.");
-        //alert(request.responseText);
+        alert(request.responseText);
          //GoToLandingPage();
          window.location.href = "/landingPage";
      }else if(request.status===403){
-        alert("username/password is  invalid.");
+        alert(request.responseText);
     }else if(request.status===500){
-         alert("Something went wrong on server.Try again.");
+         alert(request.responseText);
     }
  }
 };
