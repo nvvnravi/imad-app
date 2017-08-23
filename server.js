@@ -369,9 +369,8 @@ app.post('/getCommentHistory',function(req,res){
     }else {
         var list='';
         for(var i=0; j=result.rows.length,i<j; i++){
-            
-            list+= '<br/><p>'+result.rows[i].time.getDate()+'</p>';
-        list+= '<p>'+result.rows[i].comment+'</p>';
+           var dateValue= result.rows[i].time.getMonth()+'/'+result.rows[i].time.getDate()+'/'+result.rows[i].time.FullYear()
+            list+= '<br/><p>'+dateValue+'\n'+result.rows[i].comment+'</p>';
         }
         res.status(200).send(list);
         }
