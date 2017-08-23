@@ -174,6 +174,7 @@ var responseValue=request.responseText;
          var errorValue=document.getElementById('errorArea');
     errorValue.innerHTML='';
         getCommentHistory(articleId);
+        document.getElementById('comment').value='';
     }else{
      var errorValue=document.getElementById('errorArea');
     errorValue.innerHTML='';
