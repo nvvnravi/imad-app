@@ -163,7 +163,7 @@ request.send();
 
 
 function addComment(){
-alert("addComment  :"+userId);
+//alert("addComment  :"+userId);
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
 if(request.readyState===4){
@@ -191,7 +191,7 @@ var responseValue=request.responseText;
 //Now Make the request
 var commentValue=document.getElementById('comment').value;
 
-alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+userId);
+//alert("comment :"+commentValue+"    articleId:"+articleId+"    userId:"+userId);
 
 request.open('POST','http://nvvnravi.imad.hasura-app.io/addComment',true);
 request.setRequestHeader('Content-Type','application/json');
@@ -368,8 +368,8 @@ app.post('/getCommentHistory',function(req,res){
     }else {
         var list='';
         for(var i=0; j=result.rows.length,i<j; i++){
-           var dateValue= result.rows[i].time.getMonth()+'/'+result.rows[i].time.getDate()+'/'+result.rows[i].time.getFullYear();
-            list+= '<p>'+dateValue+'<br/>'+result.rows[i].comment+'</p>';
+          // var dateValue= result.rows[i].time.getMonth()+'/'+result.rows[i].time.getDate()+'/'+result.rows[i].time.getFullYear();
+            list+= '<p>'+result.rows[i].time.toDateString()+'<br/>'+result.rows[i].comment+'</p>';
         }
         res.status(200).send(list);
         }
