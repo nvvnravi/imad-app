@@ -116,7 +116,7 @@ request.onreadystatechange=function(){
     if( request.status===200){
           document.getElementById('registerUser').value='Register';
           alert(" User Successfully Registered. You can now login to write comments.");
-         window.location.href = "/landingPage";
+         //window.location.href = "/landingPage";
      }else if(request.status===403){
         alert("username/password is  invalid.");
     }else if(request.status===500){
