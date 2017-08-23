@@ -148,16 +148,8 @@ if(request.readyState=== 4 ){
     if( request.status=== 200){
      //alert("checkLogin :"+request.responseText);
         if(request.responseText === 'false'){
-       alert("user not logged in");
+ //      alert("user not logged in");
        document.getElementById('commentArea').style.display="none";
-       //var commentArea=Document.getElementById('commentArea').style.display="none";
-       if (typeof(commentArea) != 'undefined' && commentArea != null)
-{
-alert("comment area found");
-              commentArea.style.display="none";
-}else{
- alert("comment area is null or undefined...");
-}
         }else{
             userId=request.responseText;
         }
