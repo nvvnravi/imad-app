@@ -149,7 +149,7 @@ if(request.readyState=== 4 ){
      //alert("checkLogin :"+request.responseText);
         if(request.responseText === 'false'){
        alert("user not logged in");
-       var commentArea=Document.getElementById('commentArea');
+       var commentArea=Document.getElementById('commentArea').style.display="none";
        if (typeof(commentArea) != 'undefined' && commentArea != null)
 {
 alert("comment area found");
