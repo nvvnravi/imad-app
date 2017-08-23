@@ -106,6 +106,36 @@ request.send(JSON.stringify({username:userName,password:userPassword}));
  
 }
 
+function registerUser(){
+   var request=new XMLHttpRequest();
+
+request.onreadystatechange=function(){
+ 
+ if(request.readyState===4){
+    if( request.status===200){
+        //alert("user successfully logged in.");
+        //alert(request.responseText);
+         //GoToLandingPage();
+         window.location.href = "/landingPage";
+     }else if(request.status===403){
+        alert("username/password is  invalid.");
+    }else if(request.status===500){
+         alert("Something went wrong on server.");
+    }
+ }
+};
+
+//Now Make the request
+var userName = document.getElementById('username').value;
+var userPassword = document.getElementById('password').value;
+//console.log(userName);
+//console.log(userPassword);
+request.open('POST','http://nvvnravi.imad.hasura-app.io/createuser',true);
+request.setRequestHeader('Content-Type','application/json');
+request.send(JSON.stringify({username:userName,password:userPassword}));
+ 
+}
+
 function compare(a, b) {
   if (a<b) {
     return -1;
@@ -150,9 +180,10 @@ function compare(a, b) {
             <label for="password">Password :</label>
             <input type="password" id="password" name="password"/>
             <input type="submit" id="loginSubmit"  name="loginSubmit" onclick="login();" value="Login"/>
+            <input type="submit" id="registerUser"  name="registerUser" onclick="registerUser();" value="Register"/>
             <a href="/landingPage">Go To Article List (Read only)</a> 
             <br/>
-            Sign in to write comments to articles or create new article.
+            Sign in to write comments to articles .
             <br/>
         </div>
         <div class="footer">
