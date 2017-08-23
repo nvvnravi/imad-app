@@ -370,7 +370,7 @@ app.post('/getCommentHistory',function(req,res){
         var list='';
         for(var i=0; j=result.rows.length,i<j; i++){
             
-            list+= '<br/><p>'+result.rows[i].time+'</p>';
+            list+= '<br/><p>'+result.rows[i].time.getDate()+'</p>';
         list+= '<p>'+result.rows[i].comment+'</p>';
         }
         res.status(200).send(list);
