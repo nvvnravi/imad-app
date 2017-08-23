@@ -150,7 +150,12 @@ if(request.readyState=== 4 ){
         if(request.responseText === 'false'){
        //alert("user not logged in");
        var commentArea=Document.getElementById('commentArea');
-             commentArea.style.display='none';
+       if (typeof(element) != 'undefined' && element != null)
+{
+              commentArea.style.display='none';
+}else{
+ alert("comment area is null or undefined...");
+}
         }else{
             userId=request.responseText;
         }
