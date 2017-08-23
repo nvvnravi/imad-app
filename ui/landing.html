@@ -58,7 +58,7 @@ if(request.readyState===4 ){
 if( request.status===200){
 var userid=request.responseText;
     if(userid ==='false'){
-      
+      document.getElementById('logoutbtndiv').style.display='none';
         
     }else{
      user=parserInt(userid);
@@ -80,7 +80,9 @@ request.send();
       <br/>
       To write comments you need to <a href="/">Go To HomePage </a> to sign in.</div>  
       <br/>
+      <div id="logoutbtndiv" name="logoutbtndiv">
       <input type="button" name="logout_btn"  id="logout_btn" onclick="javascript:logout();" value="Logout"/>
+      </div>
       <br/>
       <hr/>
       <div class="articlearea">
