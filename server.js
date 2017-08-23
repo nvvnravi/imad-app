@@ -315,6 +315,16 @@ app.post('/create-user',function(req,res){
     //read username from the request body
     var userName=req.body.username;
     //console.log("UserName : "+userName);
+    //check if the user already exists..
+    client.query("select * from   user1 where username=$1",[userName], (err,result) => {
+     if(err){
+      res.status(500).send("Error in getting records from DB"+err.toString());
+  }else{
+      if(result.rows.length !== 0){
+          res.status(403).send("username  already exists. Choose another username.");
+      }
+  }   
+    });
     //read password from the request body
     var passwordValue=req.body.password;
     //console.log("Password: "+passwordValue);
