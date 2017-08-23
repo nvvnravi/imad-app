@@ -338,7 +338,7 @@ app.post('/create-user',function(req,res){
      if(err){
       res.status(500).send("Error in getting records from DB"+err.toString());
   }else{
-    res.send('User Successfully Created!!!\n');
+    res.send(' User Successfully Registered. You can now login to write comments.\n');
   }   
     });
 });
