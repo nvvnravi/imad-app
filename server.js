@@ -344,7 +344,7 @@ app.post('/addComment',function(req,res){
     var userId=req.body.userId;
     console.log("userId : "+userId);
     //Now insert the comment in comment Table
-    client.query("INSERT into  comment  (comment,article_id,user_id) values ($1,$2,$3)",[comment,parseInt(articleId),parseInt(userId)], (err,result) => {
+    client.query("INSERT into  comment  (comment,article_id,user_id) values ($1,$2,$3,$4)",[comment,parseInt(articleId),parseInt(userId),new Date()], (err,result) => {
      if(err){
       res.status(404).send("Error in adding comments to DB"+err.toString());
   }else{
