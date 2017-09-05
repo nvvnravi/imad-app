@@ -352,10 +352,10 @@ app.post('/m/create-user',function(req,res){
     //check if the user already exists..
     client.query("select * from   user1 where username=$1",[userName], (err,result) => {
      if(err){
-      res.status(500).send(JSON.stringify({ "errorMessage": "Error in getting records from DB"+err.toString() }, null, 3));
+      res.status(500).send(JSON.stringify("Error in getting records from DB"+err.toString() , null, 3));
   }else{
       if(result.rows.length !== 0){
-          res.status(403).send(JSON.stringify({ "message": "username  already exists. Choose another username." }, null, 3));
+          res.status(403).send(JSON.stringify( "username  already exists. Choose another username." , null, 3));
       }
   }   
     });
@@ -370,7 +370,7 @@ app.post('/m/create-user',function(req,res){
     //Now insert the user in the table with the passsword
     client.query("INSERT into  user1  (username,password) values ($1,$2)",[userName,hashPassword], (err,result) => {
      if(err){
-      res.status(500).send(JSON.stringify({ "errorMessage": "Error in getting records from DB"+err.toString() }, null, 3));
+      res.status(500).send(JSON.stringify("Error in getting records from DB"+err.toString() , null, 3));
   }else{
     res.send(' User Successfully Registered. You can now login to write comments.\n');
     res.status(200).send(JSON.stringify("User Successfully Registered. You can now login to write comments.\n", null, 3));
