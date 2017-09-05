@@ -443,6 +443,42 @@ app.post('/login',function(req,res){
     });
 });
 
+
+//POST method to login into the application
+app.post('/m/login',function(req,res){
+    //read username from the request body
+    var userName=req.body.username;
+    //console.log("UserName : "+userName);
+   //read password from the request body
+    var passwordValue=req.body.password;
+    //Now get the hashedpassword from the database
+    client.query("select * from   user1 where username=$1",[userName], (err,result) => {
+     if(err){
+      res.status(500).send("Error in getting records from DB"+err.toString());
+  }else{
+      if(result.rows.length === 0){
+          res.status(403).send("user does not exists.\n");
+      }else{
+          var dbPassword=result.rows[0].password;
+          //console.log(dbPassword);
+          var salt=dbPassword.split('$')[2];
+          //console.log("Salt :"+salt);
+          var hashedPassword=hash(passwordValue,salt);
+          //console.log(hashedPassword);
+          if(hashedPassword===dbPassword){
+              //set the session cookie here
+              req.session.auth={userId: result.rows[0].id};
+              //send the response
+              res.status(200).json(message:"user successfully logged in!!! ");
+             
+               }else{
+              res.status(403).json(errorMessage:"username/password is invalid.\n");
+          }
+      }
+  }   
+    });
+});
+
 var names=[];
 app.get('/submitName', function (req, res) {
 //var reqName=req.params.name;
