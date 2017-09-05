@@ -321,7 +321,7 @@ app.post('/create-user',function(req,res){
       res.status(500).send("Error in getting records from DB"+err.toString());
   }else{
       if(result.rows.length !== 0){
-          res.status(403).send("username  already exists. Choose another username.");
+          res.status(403).send("username already exists. Choose another username.");
       }
   }   
     });
