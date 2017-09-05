@@ -373,7 +373,7 @@ app.post('/m/create-user',function(req,res){
       res.status(500).send(JSON.stringify({ "errorMessage": "Error in getting records from DB"+err.toString() }, null, 3));
   }else{
     res.send(' User Successfully Registered. You can now login to write comments.\n');
-    res.status(200).send(JSON.stringify({ "message": "User Successfully Registered. You can now login to write comments.\n" }, null, 3));
+    res.status(200).send(JSON.stringify("User Successfully Registered. You can now login to write comments.\n", null, 3));
   }   
     });
 });
