@@ -457,7 +457,10 @@ app.post('/m/login',function(req,res){
       res.status(500).send("Error in getting records from DB"+err.toString());
   }else{
       if(result.rows.length === 0){
-          res.status(403).send("user does not exists.\n");
+          var json = JSON.stringify({ 
+                message: "user does not exists.\n"
+                });
+              res.status(403).send(json);
       }else{
           var dbPassword=result.rows[0].password;
           //console.log(dbPassword);
@@ -469,15 +472,16 @@ app.post('/m/login',function(req,res){
               //set the session cookie here
               req.session.auth={userId: result.rows[0].id};
               //send the response
-              //res.status(200).send("user successfully logged in!!! ");
-               //res.writeHead(200, {"Content-Type": "application/json"});
                var json = JSON.stringify({ 
                 message: "user successfully logged in!!! "
                 });
               res.status(200).send(json);
              
                }else{
-              res.status(403).send("username/password is invalid.\n");
+                   var json = JSON.stringify({ 
+                message: "username/password is invalid.\n"
+                });
+              res.status(403).send(json);
           }
       }
   }   
