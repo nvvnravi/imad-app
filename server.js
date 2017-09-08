@@ -383,7 +383,7 @@ app.post('/m/create-user',function(req,res){
       
   }else{
              var json = JSON.stringify({ 
-                message: "User Successfully Registered. You can now login to write comments.\n"
+                message: "User Successfully Registered. \n"
                 });
               res.status(200).send(json);
     
