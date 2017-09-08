@@ -471,7 +471,10 @@ app.post('/m/login',function(req,res){
               //send the response
               //res.status(200).send("user successfully logged in!!! ");
                res.writeHead(200, {"Content-Type": "application/json"});
-              res.status(200).send("user successfully logged in!!! ");
+               var json = JSON.stringify({ 
+                message: "user successfully logged in!!! "
+                });
+              res.status(200).send(json);
              
                }else{
               res.status(403).send("username/password is invalid.\n");
