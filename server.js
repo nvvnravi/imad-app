@@ -470,7 +470,7 @@ app.post('/m/login',function(req,res){
               req.session.auth={userId: result.rows[0].id};
               //send the response
               //res.status(200).send("user successfully logged in!!! ");
-               res.writeHead(200, {"Content-Type": "application/json"});
+               //res.writeHead(200, {"Content-Type": "application/json"});
                var json = JSON.stringify({ 
                 message: "user successfully logged in!!! "
                 });
