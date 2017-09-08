@@ -479,7 +479,7 @@ app.post('/m/login',function(req,res){
              
                }else{
                    var json = JSON.stringify({ 
-                message: "username/password is invalid.\n"
+                error: "username/password is invalid.\n"
                 });
               res.status(403).send(json);
           }
