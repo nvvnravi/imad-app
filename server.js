@@ -469,7 +469,8 @@ app.post('/m/login',function(req,res){
               //set the session cookie here
               req.session.auth={userId: result.rows[0].id};
               //send the response
-              res.status(200).send("user successfully logged in!!! ");
+              //res.status(200).send("user successfully logged in!!! ");
+              res.send("user successfully logged in!!! ");
              
                }else{
               res.status(403).send("username/password is invalid.\n");
