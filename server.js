@@ -343,6 +343,54 @@ app.post('/create-user',function(req,res){
     });
 });
 
+
+app.post('/m/create-user',function(req,res){
+    //read username from the request body
+    var userName=req.body.username;
+    //console.log("UserName : "+userName);
+    //check if the user already exists..
+    client.query("select * from   user1 where username=$1",[userName], (err,result) => {
+     if(err){
+          var json = JSON.stringify({ 
+                error: "Error in getting records from DB"+err.toString()
+                });
+              res.status(500).send(json);
+      
+  }else{
+      if(result.rows.length !== 0){
+              var json = JSON.stringify({ 
+                error: "username already exists. Choose another username."
+                });
+              res.status(403).send(json);
+      }
+  }   
+    });
+    //read password from the request body
+    var passwordValue=req.body.password;
+    //console.log("Password: "+passwordValue);
+    //Convert the password into a hashedPassword
+    var salt=crypto.randomBytes(128).toString('hex');
+    //console.log("Salt : "+salt);
+    var hashPassword = hash(passwordValue,salt);
+    console.log("hashPassword  :  "+hashPassword);
+    //Now insert the user in the table with the passsword
+    client.query("INSERT into  user1  (username,password) values ($1,$2)",[userName,hashPassword], (err,result) => {
+     if(err){
+             var json = JSON.stringify({ 
+                error: "Error in getting records from DB"+err.toString()
+                });
+              res.status(500).send(json);
+      
+  }else{
+             var json = JSON.stringify({ 
+                error: "User Successfully Registered. You can now login to write comments.\n"
+                });
+              res.status(200).send(json);
+    
+  }   
+    });
+});
+
 app.post('/addComment',function(req,res){
     //read comment from the request body
     var comment=req.body.comment;
